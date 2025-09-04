@@ -1,87 +1,90 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portfolio</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-  <header class="site-header">
-    <h1>Portfolio</h1>
-    <nav>
-      <a href="#about">About</a>
-      <a href="#skills">Skills</a>
-      <a href="#works">Works</a>
-      <a href="#contact">Contact</a>
-    </nav>
-  </header>
+    <header class="site-header">
+        <h1>Portfolio</h1>
+        <nav>
+            <a href="#about">About</a>
+            <a href="#skills">Skills</a>
+            <a href="#works">Works</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
 
-  <section id="about" class="hero">
-    <h2>Hello!</h2>
-    <p>This is a colorful portfolio showcasing my work and skills.</p>
-  </section>
+    <section id="about" class="hero">
+        <h2>Hello!</h2>
+        <p>This is a clean and colorful portfolio showcasing my work and skills.</p>
+    </section>
 
-  <section id="skills" class="skills">
-    <h2>Skills</h2>
-    <ul class="skill-list">
-      <li>HTML / CSS / JavaScript</li>
-      <li>React / Next.js</li>
-      <li>UI/UX Design</li>
-      <li>Figma / Photoshop / Illustrator</li>
-    </ul>
-  </section>
+    <section id="skills" class="skills">
+        <h2>Skills</h2>
+        <ul class="skill-list">
+            <li>HTML / CSS / JavaScript</li>
+            <li>React / Next.js</li>
+            <li>UI/UX Design</li>
+            <li>Figma / Photoshop / Illustrator</li>
+        </ul>
+    </section>
 
-  <section id="works" class="projects">
-    <h2>Works</h2>
-    <div class="grid">
-      <div class="card project-card">
-        <img src="images/work1.png" alt="Project 1 screenshot">
-        <p>Project 1 description</p>
-      </div>
-      <div class="card project-card">
-        <img src="images/work2.png" alt="Project 2 screenshot">
-        <p>Project 2 description</p>
-      </div>
-      <div class="card project-card">
-        <img src="images/work3.png" alt="Project 3 screenshot">
-        <p>Project 3 description</p>
-      </div>
-    </div>
-  </section>
+    <section id="works" class="projects">
+        <h2>Works</h2>
+        <div class="grid" id="cards-container">
+            <!-- JSで自動生成 -->
+        </div>
+    </section>
 
-  <section id="contact" class="contact">
-    <h2>Contact</h2>
-    <form>
-      <input type="text" placeholder="Name">
-      <input type="email" placeholder="Email">
-      <textarea placeholder="Message"></textarea>
-      <button type="submit">Send</button>
-    </form>
-  </section>
+    <section id="contact" class="contact">
+        <h2>Contact</h2>
+        <form>
+            <input type="text" placeholder="Name">
+            <input type="email" placeholder="Email">
+            <textarea placeholder="Message"></textarea>
+            <button type="submit">Send</button>
+        </form>
+    </section>
 
-  <footer class="site-footer">
-    <p>© 2025 Portfolio</p>
-  </footer>
+    <footer class="site-footer">
+        <p>© 2025 Portfolio</p>
+    </footer>
 
-  <!-- ランダムカラー用JavaScript -->
-  <script>
-    const colors = [
-      '#8EEBEC','#8EECDC','#8EECCB','#8EECB3','#8EEC98',
-      '#A3EC8E','#BFEC8E','#E5EC8E','#ECDF8E','#ECD58E',
-      '#ECC48E','#ECB48E','#EC9E8E','#EC8E8F','#EC8EA5',
-      '#EC8EB6','#EC8EC7','#EC8ED6','#EC8EE5','#E18EEC',
-      '#CB8EEC','#B78EEC','#A78EEC','#958EEC','#8E9EEC',
-      '#8EB4EC','#8EC9EC','#8ED7EC','#8EE2EC','#8EECEA'
-    ];
+    <!-- ランダムカラー＋カード自動生成JS -->
+    <script>
+        const colors = [
+            '#8EEBEC','#8EECDC','#8EECCB','#8EECB3','#8EEC98',
+            '#A3EC8E','#BFEC8E','#E5EC8E','#ECDF8E','#ECD58E',
+            '#ECC48E','#ECB48E','#EC9E8E','#EC8E8F','#EC8EA5',
+            '#EC8EB6','#EC8EC7','#EC8ED6','#8EECEA','#E18EEC',
+            '#CB8EEC','#B78EEC','#A78EEC','#958EEC','#8E9EEC',
+            '#8EB4EC','#8EC9EC','#8ED7EC','#8EE2EC','#8EECEA'
+        ];
 
-    const cards = document.querySelectorAll('.project-card');
+        const imageCount = 100; // 画像の枚数に合わせて変更
+        const container = document.getElementById('cards-container');
 
-    cards.forEach(card => {
-      const randomColor = colors[Math.floor(Math.random() * colors.length)];
-      card.style.backgroundColor = randomColor;
-      card.style.color = '#333'; // 文字色固定
-    });
-  </script>
+        for (let i = 1; i <= imageCount; i++) {
+            const card = document.createElement('div');
+            card.className = 'card';
+
+            // ランダム背景色
+            const randomColor = colors[Math.floor(Math.random() * colors.length)];
+            card.style.backgroundColor = randomColor;
+
+            // 画像を追加
+            const img = document.createElement('img');
+            img.src = `images/work${i}.png`; // images/work1.png 〜 work100.png を用意
+            img.alt = `Project ${i}`;
+
+            card.appendChild(img);
+            container.appendChild(card);
+        }
+    </script>
 </body>
 </html>
+

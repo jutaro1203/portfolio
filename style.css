@@ -69,41 +69,28 @@ a {
     max-width: 1200px;
     margin: 0 auto;
     justify-content: center;
+    align-items: flex-start;
 }
 
 .card {
     margin-bottom: 20px;
     border-radius: 20px;
-    padding: 12px;
+    padding: 15px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.15);
     transition: all 0.3s ease;
     text-align: center;
     box-sizing: border-box;
     position: relative;
     overflow: hidden;
-    width: 200px;
     flex-shrink: 0;
-}
-
-@media (max-width: 1024px) {
-    .card { width: 180px; }
-}
-
-@media (max-width: 768px) {
-    .card { width: 160px; }
-}
-
-@media (max-width: 480px) {
-    .card { width: calc(50% - 10px); }
-    .works-grid { gap: 15px; }
+    /* サイズはJavaScriptで動的に設定 */
 }
 
 .card img { 
-    width: 100%; 
-    height: auto;
     border-radius: 10px; 
     display: block;
     transition: transform 0.3s ease;
+    object-fit: cover;
 }
 
 .card:hover { 

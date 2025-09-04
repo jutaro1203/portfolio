@@ -30,7 +30,7 @@ a {
     color: #fff; 
 }
 
-/* ヒーローセクション */
+/* ハローセクション */
 .hero { 
     text-align: center; 
     padding: 80px 20px; 
@@ -65,6 +65,9 @@ a {
     padding: 50px 20px; 
     text-align: center; 
     position: relative; 
+
+    /* 背景画像を固定 */
+    background: url("images/work29.jpg") center center / cover no-repeat fixed;
 }
 
 /* グリッドレイアウト */
@@ -128,7 +131,7 @@ a {
     transform: translateY(-8px) rotate(1deg) scale(1.02);
 }
 
-/* コンテクトセクション */
+/* コンタクトセクション */
 .contact { 
     background-color: #ffe4e1; 
     padding: 50px 20px; 
@@ -190,3 +193,4 @@ a {
     .card { padding: 10px; }
     .contact input, .contact textarea, .contact button { font-size: 0.9rem; }
 }
+

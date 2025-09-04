@@ -66,8 +66,15 @@ a {
     text-align: center; 
     position: relative; 
 
-    /* 背景画像を固定 */
-    background: url("images/work29.jpg") center center / cover no-repeat fixed;
+    /* 背景画像を固定（動かない・スクロールしない） */
+    background-image: url("work29.jpg");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+
+    color: #fff;
+    overflow: hidden; /* transform が背景に影響しないように */
 }
 
 /* グリッドレイアウト */
@@ -193,4 +200,5 @@ a {
     .card { padding: 10px; }
     .contact input, .contact textarea, .contact button { font-size: 0.9rem; }
 }
+
 

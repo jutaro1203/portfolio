@@ -1,286 +1,198 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;700&display=swap" rel="stylesheet">
-</head>
-<body>
-    <header class="site-header">
-        <h1>Portfolio</h1>
-        <nav>
-            <a href="#about" style="color:#DE4DA2;">About</a>
-            <a href="#skills" style="color:#FFE825;">Skills</a>
-            <a href="#works" style="color:#CCE52D;">Works</a>
-            <a href="#contact" style="color:#6ED6F4;">Contact</a>
-        </nav>
-    </header>
-    <section id="about" class="hero">
-        <h2>Hello!</h2>
-        <p>This is a clean and colorful portfolio showcasing my work and skills.</p>
-    </section>
-    <section id="skills" class="skills">
-        <h2>Skills</h2>
-        <ul class="skill-list">
-            <li>HTML / CSS / JavaScript</li>
-            <li>React / Next.js</li>
-            <li>UI/UX Design</li>
-            <li>Figma / Photoshop / Illustrator</li>
-        </ul>
-    </section>
-    <section id="works" class="projects">
-        <h2>Works</h2>
-        <div class="works-grid" id="cards-container">
-            <!-- JSでカードを自動生成 -->
-        </div>
-    </section>
-    <section id="contact" class="contact">
-        <h2>Contact</h2>
-        <form>
-            <input type="text" placeholder="Name">
-            <input type="email" placeholder="Email">
-            <textarea placeholder="Message"></textarea>
-            <button type="submit">Send</button>
-        </form>
-    </section>
-    <footer class="site-footer">
-        <p>© 2025 Portfolio</p>
-    </footer>
-    <script>
-        // 順番に使う背景色
-        const colors = [
-            '#8EEBEC','#8EECDC','#8EECCB','#8EECB3','#8EEC98',
-            '#A3EC8E','#BFEC8E','#E5EC8E','#ECDF8E','#ECD58E',
-            '#ECC48E','#ECB48E','#EC9E8E','#EC8E8F','#EC8EA5',
-            '#EC8EB6','#EC8EC7','#8ED7EC','#8EE2EC','#8EECEA',
-            '#E18EEC','#CB8EEC','#B78EEC','#A78EEC','#958EEC',
-            '#8E9EEC','#8EB4EC','#8EC9EC','#8ED7EC','#8EE2EC','#8EECEA'
-        ];
-        
-        const container = document.getElementById('cards-container');
-        
-        // 実際の画像パスに置き換えてください
-        const images = [
-{ src: 'images/work1.jpg' },
-{ src: 'images/work10.JPG' },
-{ src: 'images/work100.HEIC' },
-{ src: 'images/work101.JPG' },
-{ src: 'images/work102.HEIC' },
-{ src: 'images/work103.HEIC' },
-{ src: 'images/work104.HEIC' },
-{ src: 'images/work105.JPG' },
-{ src: 'images/work106.JPG' },
-{ src: 'images/work107.JPG' },
-{ src: 'images/work11.JPG' },
-{ src: 'images/work12.JPG' },
-{ src: 'images/work13.JPG' },
-{ src: 'images/work14.JPG' },
-{ src: 'images/work15.JPG' },
-{ src: 'images/work16.JPG' },
-{ src: 'images/work17.JPG' },
-{ src: 'images/work18.JPG' },
-{ src: 'images/work19.jpg' },
-{ src: 'images/work2.jpeg' },
-{ src: 'images/work20.jpeg' },
-{ src: 'images/work21.jpg' },
-{ src: 'images/work22.JPG' },
-{ src: 'images/work23.jpeg' },
-{ src: 'images/work24.JPG' },
-{ src: 'images/work25.HEIC' },
-{ src: 'images/work26.JPG' },
-{ src: 'images/work27.JPG' },
-{ src: 'images/work28.JPG' },
-{ src: 'images/work29.JPG' },
-{ src: 'images/work3.jpeg' },
-{ src: 'images/work30.HEIC' },
-{ src: 'images/work31.HEIC' },
-{ src: 'images/work32.HEIC' },
-{ src: 'images/work33.JPG' },
-{ src: 'images/work34.HEIC' },
-{ src: 'images/work35.HEIC' },
-{ src: 'images/work36.HEIC' },
-{ src: 'images/work37.HEIC' },
-{ src: 'images/work38.JPG' },
-{ src: 'images/work39.JPG' },
-{ src: 'images/work4.jpg' },
-{ src: 'images/work40.HEIC' },
-{ src: 'images/work41.JPG' },
-{ src: 'images/work42.HEIC' },
-{ src: 'images/work43.HEIC' },
-{ src: 'images/work44.HEIC' },
-{ src: 'images/work45.JPG' },
-{ src: 'images/work46.JPG' },
-{ src: 'images/work47.JPG' },
-{ src: 'images/work48.JPG' },
-{ src: 'images/work49.JPG' },
-{ src: 'images/work5.jpg' },
-{ src: 'images/work51.HEIC' },
-{ src: 'images/work52.HEIC' },
-{ src: 'images/work53.HEIC' },
-{ src: 'images/work54.HEIC' },
-{ src: 'images/work55.HEIC' },
-{ src: 'images/work56.JPG' },
-{ src: 'images/work57.jpg' },
-{ src: 'images/work58.HEIC' },
-{ src: 'images/work6.jpg' },
-{ src: 'images/work60.HEIC' },
-{ src: 'images/work61.JPG' },
-{ src: 'images/work62.HEIC' },
-{ src: 'images/work63.JPG' },
-{ src: 'images/work64.HEIC' },
-{ src: 'images/work65.JPG' },
-{ src: 'images/work66.JPG' },
-{ src: 'images/work67.HEIC' },
-{ src: 'images/work68.HEIC' },
-{ src: 'images/work69.HEIC' },
-{ src: 'images/work7.JPG' },
-{ src: 'images/work70.JPG' },
-{ src: 'images/work71.JPG' },
-{ src: 'images/work72.JPG' },
-{ src: 'images/work73.HEIC' },
-{ src: 'images/work74.JPG' },
-{ src: 'images/work75.JPG' },
-{ src: 'images/work76.JPG' },
-{ src: 'images/work77.HEIC' },
-{ src: 'images/work78.JPG' },
-{ src: 'images/work79.HEIC' },
-{ src: 'images/work80.HEIC' },
-{ src: 'images/work81.JPG' },
-{ src: 'images/work82.HEIC' },
-{ src: 'images/work83.HEIC' },
-{ src: 'images/work84.JPG' },
-{ src: 'images/work85.JPG' },
-{ src: 'images/work86.HEIC' },
-{ src: 'images/work87.JPG' },
-{ src: 'images/work89.JPG' },
-{ src: 'images/work9.jpg' },
-{ src: 'images/work90.JPG' },
-{ src: 'images/work91.HEIC' },
-{ src: 'images/work92.JPG' },
-{ src: 'images/work93.HEIC' },
-{ src: 'images/work94.JPG' },
-{ src: 'images/work95.JPG' },
-{ src: 'images/work96.JPG' },
-{ src: 'images/work97.JPG' },
-{ src: 'images/work98.HEIC' },
-{ src: 'images/work99.HEIC' }
-            // 追加の画像がある場合はここに書き足してください
-        ];
-        
-        // 配列をランダムにシャッフル
-        function shuffle(array) {
-            for (let i = array.length - 1; i > 0; i--) {
-                const j = Math.floor(Math.random() * (i + 1));
-                [array[i], array[j]] = [array[j], array[i]];
-            }
-            return array;
-        }
-        
-        const shuffledImages = shuffle([...images]);
-        
-        // ランダムな回転クラスを追加する関数
-        function getRandomRotation() {
-            const rotations = ['', 'rotate-left', 'rotate-right'];
-            return rotations[Math.floor(Math.random() * rotations.length)];
-        }
-        
-        // カード生成
-        for (let i = 0; i < shuffledImages.length; i++) {
-            const card = document.createElement('div');
-            card.className = `card ${getRandomRotation()}`;
-            
-            // 背景色は順番にループ
-            card.style.backgroundColor = colors[i % colors.length];
-            
-            // 画像追加
-            const img = document.createElement('img');
-            img.src = shuffledImages[i].src;
-            img.alt = shuffledImages[i].title;
-            
-            // 画像の読み込み完了を待つ
-            img.onload = function() {
-                // 画像のアスペクト比を正確に計算
-                const aspectRatio = this.naturalHeight / this.naturalWidth;
-                const baseWidth = 200; // ベース幅
-                
-                // アスペクト比に基づいて正確なサイズを計算
-                let cardWidth, cardHeight;
-                
-                if (aspectRatio >= 1.5) {
-                    // 縦長 (1:2など)
-                    cardWidth = Math.min(baseWidth * 0.8, 160);
-                    cardHeight = cardWidth * aspectRatio + 30; // padding分を加算
-                } else if (aspectRatio >= 1.2) {
-                    // やや縦長 (3:4など)
-                    cardWidth = Math.min(baseWidth * 0.9, 180);
-                    cardHeight = cardWidth * aspectRatio + 30;
-                } else if (aspectRatio >= 0.9) {
-                    // 正方形に近い (1:1など)
-                    cardWidth = baseWidth;
-                    cardHeight = cardWidth * aspectRatio + 30;
-                } else if (aspectRatio >= 0.6) {
-                    // 横長 (16:9など)
-                    cardWidth = Math.min(baseWidth * 1.2, 240);
-                    cardHeight = cardWidth * aspectRatio + 30;
-                } else {
-                    // 超横長
-                    cardWidth = Math.min(baseWidth * 1.4, 280);
-                    cardHeight = cardWidth * aspectRatio + 30;
-                }
-                
-                // レスポンシブ対応
-                const screenWidth = window.innerWidth;
-                if (screenWidth <= 480) {
-                    // スマホ: 画面幅の45%程度
-                    cardWidth = Math.min(cardWidth, screenWidth * 0.45);
-                    cardHeight = cardWidth * aspectRatio + 30;
-                } else if (screenWidth <= 768) {
-                    // タブレット: サイズを少し縮小
-                    cardWidth *= 0.9;
-                    cardHeight = cardWidth * aspectRatio + 30;
-                }
-                
-                // カードサイズを設定
-                card.style.width = `${cardWidth}px`;
-                card.style.height = `${cardHeight}px`;
-                
-                // 画像サイズも調整（padding分を差し引く）
-                this.style.width = `${cardWidth - 30}px`;
-                this.style.height = `${(cardWidth - 30) * aspectRatio}px`;
-                this.style.objectFit = 'cover';
-            };
-            
-            card.appendChild(img);
-            container.appendChild(card);
-        }
-        
-        // スクロール時のアニメーション効果（オプション）
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-        
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = entry.target.style.transform.replace('translateY(30px)', 'translateY(0)');
-                }
-            });
-        }, observerOptions);
-        
-        // 初期状態を設定してオブザーバーに登録
-        setTimeout(() => {
-            document.querySelectorAll('.card').forEach((card, index) => {
-                card.style.opacity = '0';
-                card.style.transform += ' translateY(30px)';
-                card.style.transition = `all 0.6s ease ${index * 0.1}s`;
-                observer.observe(card);
-            });
-        }, 100);
-    </script>
-</body>
-</html>
+<script>
+    // 順番に使う背景色
+    const colors = [
+        '#8EEBEC','#8EECDC','#8EECCB','#8EECB3','#8EEC98',
+        '#A3EC8E','#BFEC8E','#E5EC8E','#ECDF8E','#ECD58E',
+        '#ECC48E','#ECB48E','#EC9E8E','#EC8E8F','#EC8EA5',
+        '#EC8EB6','#EC8EC7','#8ED7EC','#8EE2EC','#8EECEA',
+        '#E18EEC','#CB8EEC','#B78EEC','#A78EEC','#958EEC',
+        '#8E9EEC','#8EB4EC','#8EC9EC','#8ED7EC','#8EE2EC','#8EECEA'
+    ];
 
+    const container = document.getElementById('cards-container');
+
+    // 画像配列
+    const images = [
+        { src: 'images/work1.jpg' },
+        { src: 'images/work10.JPG' },
+        { src: 'images/work100.HEIC' },
+        { src: 'images/work101.JPG' },
+        { src: 'images/work102.HEIC' },
+        { src: 'images/work103.HEIC' },
+        { src: 'images/work104.HEIC' },
+        { src: 'images/work105.JPG' },
+        { src: 'images/work106.JPG' },
+        { src: 'images/work107.JPG' },
+        { src: 'images/work11.JPG' },
+        { src: 'images/work12.JPG' },
+        { src: 'images/work13.JPG' },
+        { src: 'images/work14.JPG' },
+        { src: 'images/work15.JPG' },
+        { src: 'images/work16.JPG' },
+        { src: 'images/work17.JPG' },
+        { src: 'images/work18.JPG' },
+        { src: 'images/work19.jpg' },
+        { src: 'images/work2.jpeg' },
+        { src: 'images/work20.jpeg' },
+        { src: 'images/work21.jpg' },
+        { src: 'images/work22.JPG' },
+        { src: 'images/work23.jpeg' },
+        { src: 'images/work24.JPG' },
+        { src: 'images/work25.HEIC' },
+        { src: 'images/work26.JPG' },
+        { src: 'images/work27.JPG' },
+        { src: 'images/work28.JPG' },
+        { src: 'images/work29.JPG' },
+        { src: 'images/work3.jpeg' },
+        { src: 'images/work30.HEIC' },
+        { src: 'images/work31.HEIC' },
+        { src: 'images/work32.HEIC' },
+        { src: 'images/work33.JPG' },
+        { src: 'images/work34.HEIC' },
+        { src: 'images/work35.HEIC' },
+        { src: 'images/work36.HEIC' },
+        { src: 'images/work37.HEIC' },
+        { src: 'images/work38.JPG' },
+        { src: 'images/work39.JPG' },
+        { src: 'images/work4.jpg' },
+        { src: 'images/work40.HEIC' },
+        { src: 'images/work41.JPG' },
+        { src: 'images/work42.HEIC' },
+        { src: 'images/work43.HEIC' },
+        { src: 'images/work44.HEIC' },
+        { src: 'images/work45.JPG' },
+        { src: 'images/work46.JPG' },
+        { src: 'images/work47.JPG' },
+        { src: 'images/work48.JPG' },
+        { src: 'images/work49.JPG' },
+        { src: 'images/work5.jpg' },
+        { src: 'images/work51.HEIC' },
+        { src: 'images/work52.HEIC' },
+        { src: 'images/work53.HEIC' },
+        { src: 'images/work54.HEIC' },
+        { src: 'images/work55.HEIC' },
+        { src: 'images/work56.JPG' },
+        { src: 'images/work57.jpg' },
+        { src: 'images/work58.HEIC' },
+        { src: 'images/work6.jpg' },
+        { src: 'images/work60.HEIC' },
+        { src: 'images/work61.JPG' },
+        { src: 'images/work62.HEIC' },
+        { src: 'images/work63.JPG' },
+        { src: 'images/work64.HEIC' },
+        { src: 'images/work65.JPG' },
+        { src: 'images/work66.JPG' },
+        { src: 'images/work67.HEIC' },
+        { src: 'images/work68.HEIC' },
+        { src: 'images/work69.HEIC' },
+        { src: 'images/work7.JPG' },
+        { src: 'images/work70.JPG' },
+        { src: 'images/work71.JPG' },
+        { src: 'images/work72.JPG' },
+        { src: 'images/work73.HEIC' },
+        { src: 'images/work74.JPG' },
+        { src: 'images/work75.JPG' },
+        { src: 'images/work76.JPG' },
+        { src: 'images/work77.HEIC' },
+        { src: 'images/work78.JPG' },
+        { src: 'images/work79.HEIC' },
+        { src: 'images/work80.HEIC' },
+        { src: 'images/work81.JPG' },
+        { src: 'images/work82.HEIC' },
+        { src: 'images/work83.HEIC' },
+        { src: 'images/work84.JPG' },
+        { src: 'images/work85.JPG' },
+        { src: 'images/work86.HEIC' },
+        { src: 'images/work87.JPG' },
+        { src: 'images/work89.JPG' },
+        { src: 'images/work9.jpg' },
+        { src: 'images/work90.JPG' },
+        { src: 'images/work91.HEIC' },
+        { src: 'images/work92.JPG' },
+        { src: 'images/work93.HEIC' },
+        { src: 'images/work94.JPG' },
+        { src: 'images/work95.JPG' },
+        { src: 'images/work96.JPG' },
+        { src: 'images/work97.JPG' },
+        { src: 'images/work98.HEIC' },
+        { src: 'images/work99.HEIC' }
+    ];
+
+    // 配列をランダムにシャッフル
+    function shuffle(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [array[i], array[j]] = [array[j], array[i]];
+        }
+        return array;
+    }
+
+    const shuffledImages = shuffle([...images]);
+
+    // ランダムな回転クラス
+    function getRandomRotation() {
+        const rotations = ['', 'rotate-left', 'rotate-right'];
+        return rotations[Math.floor(Math.random() * rotations.length)];
+    }
+
+    // カード生成
+    shuffledImages.forEach((image, i) => {
+        const card = document.createElement('div');
+        card.className = `card ${getRandomRotation()}`;
+        card.style.backgroundColor = colors[i % colors.length];
+
+        const img = document.createElement('img');
+        img.src = image.src;
+        img.alt = image.src.split('/').pop(); // ファイル名をaltに設定
+
+        img.onload = function() {
+            const aspectRatio = this.naturalHeight / this.naturalWidth;
+            const baseWidth = 200;
+            let cardWidth, cardHeight;
+
+            if (aspectRatio >= 1.5) cardWidth = Math.min(baseWidth*0.8,160);
+            else if (aspectRatio >= 1.2) cardWidth = Math.min(baseWidth*0.9,180);
+            else if (aspectRatio >= 0.9) cardWidth = baseWidth;
+            else if (aspectRatio >= 0.6) cardWidth = Math.min(baseWidth*1.2,240);
+            else cardWidth = Math.min(baseWidth*1.4,280);
+
+            cardHeight = cardWidth * aspectRatio + 30;
+
+            const screenWidth = window.innerWidth;
+            if (screenWidth <= 480) cardWidth = Math.min(cardWidth, screenWidth*0.45);
+            else if (screenWidth <= 768) cardWidth *= 0.9;
+
+            cardHeight = cardWidth * aspectRatio + 30;
+
+            card.style.width = `${cardWidth}px`;
+            card.style.height = `${cardHeight}px`;
+
+            this.style.width = `${cardWidth - 30}px`;
+            this.style.height = `${(cardWidth - 30) * aspectRatio}px`;
+            this.style.objectFit = 'cover';
+        };
+
+        card.appendChild(img);
+        container.appendChild(card);
+    });
+
+    // スクロール時のアニメーション
+    const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = entry.target.style.transform.replace('translateY(30px)', 'translateY(0)');
+            }
+        });
+    }, observerOptions);
+
+    setTimeout(() => {
+        document.querySelectorAll('.card').forEach((card, index) => {
+            card.style.opacity = '0';
+            card.style.transform += ' translateY(30px)';
+            card.style.transition = `all 0.6s ease ${index*0.1}s`;
+            observer.observe(card);
+        });
+    }, 100);
+</script>

@@ -70,8 +70,8 @@ a {
 
 .card {
     border-radius: 20px;
-    padding: 30px;
-    width: 220px;
+    padding: 20px;
+    width: 180px; /* 横5列用に少し幅を小さく調整 */
     box-shadow: 0 4px 6px rgba(0,0,0,0.1);
     transition: transform 0.3s ease;
     text-align: center;
@@ -126,4 +126,6 @@ a {
     padding: 20px;
     margin-top: 50px;
 }
+
+
 

@@ -38,22 +38,25 @@ a { text-decoration: none; color: #ff69b4; margin: 0 10px; }
 .card {
     border-radius: 20px;
     margin-bottom: 16px;
-    padding: 10px;             /* 画像より少し余白 */
+    padding: 8px;               /* 画像より少し余白 */
     overflow: hidden;
     text-align: center;
     transition: transform 0.3s ease;
+    box-sizing: border-box;      /* paddingも幅に含める */
 }
+
 .card img {
     width: 100%;
     height: auto;
     display: block;
     border-radius: 10px;
-    object-fit: cover;
-    padding: 5px;               /* 背景色が見える */
+    object-fit: cover;           /* カード内で比率維持 */
+    padding: 5px;                /* 背景色が見える */
 }
+
 .card:hover { transform: translateY(-5px); }
 
 /* レスポンシブ */
 @media (max-width: 1200px) { .grid-sizer { width: 30%; } }
-@media (max-width: 900px) { .grid-sizer { width: 45%; } }
-@media (max-width: 600px) { .grid-sizer { width: 100%; } }
+@media (max-width: 900px)  { .grid-sizer { width: 45%; } }
+@media (max-width: 600px)  { .grid-sizer { width: 100%; } }

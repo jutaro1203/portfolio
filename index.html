@@ -1,218 +1,109 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Portfolio</title>
-<link rel="stylesheet" href="style.css">
-<link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-<header class="site-header">
-    <h1>Portfolio</h1>
-    <nav>
-        <a href="#about">About</a>
-        <a href="#skills">Skills</a>
-        <a href="#works">Works</a>
-        <a href="#contact">Contact</a>
-    </nav>
-</header>
+    <header class="site-header">
+        <h1>Portfolio</h1>
+        <nav>
+            <a href="#about">About</a>
+            <a href="#skills">Skills</a>
+            <a href="#works">Works</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
 
-<section id="about" class="hero">
-    <h2>Hello!</h2>
-    <p>This is a clean and colorful portfolio showcasing my work and skills.</p>
-</section>
+    <section id="about" class="hero">
+        <h2>Hello!</h2>
+        <p>This is a clean and colorful portfolio showcasing my work and skills.</p>
+    </section>
 
-<section id="skills" class="skills">
-    <h2>Skills</h2>
-    <ul class="skill-list">
-        <li>HTML / CSS / JavaScript</li>
-        <li>React / Next.js</li>
-        <li>UI/UX Design</li>
-        <li>Figma / Photoshop / Illustrator</li>
-    </ul>
-</section>
+    <section id="skills" class="skills">
+        <h2>Skills</h2>
+        <ul class="skill-list">
+            <li>HTML / CSS / JavaScript</li>
+            <li>React / Next.js</li>
+            <li>UI/UX Design</li>
+            <li>Figma / Photoshop / Illustrator</li>
+        </ul>
+    </section>
 
-<section id="works" class="projects">
-    <h2>Works</h2>
-    <div class="grid" id="cards-container">
-        <div class="grid-sizer"></div> <!-- Masonry用基準幅 -->
-        <!-- JSでカード自動生成 -->
-    </div>
-</section>
+    <section id="works" class="projects">
+        <h2>Works</h2>
+        <div class="grid" id="cards-container">
+            <!-- JSでカードを自動生成 -->
+        </div>
+    </section>
 
-<section id="contact" class="contact">
-    <h2>Contact</h2>
-    <form>
-        <input type="text" placeholder="Name">
-        <input type="email" placeholder="Email">
-        <textarea placeholder="Message"></textarea>
-        <button type="submit">Send</button>
-    </form>
-</section>
+    <section id="contact" class="contact">
+        <h2>Contact</h2>
+        <form>
+            <input type="text" placeholder="Name">
+            <input type="email" placeholder="Email">
+            <textarea placeholder="Message"></textarea>
+            <button type="submit">Send</button>
+        </form>
+    </section>
 
-<footer class="site-footer">
-    <p>© 2025 Portfolio</p>
-</footer>
+    <footer class="site-footer">
+        <p>© 2025 Portfolio</p>
+    </footer>
 
-<!-- Masonry & imagesLoaded -->
-<script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
-<script src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.min.js"></script>
+    <script>
+        // 順番に使う背景色
+        const colors = [
+            '#8EEBEC','#8EECDC','#8EECCB','#8EECB3','#8EEC98',
+            '#A3EC8E','#BFEC8E','#E5EC8E','#ECDF8E','#ECD58E',
+            '#ECC48E','#ECB48E','#EC9E8E','#EC8E8F','#EC8EA5',
+            '#EC8EB6','#EC8EC7','#8ED7EC','#8EE2EC','#8EECEA',
+            '#E18EEC','#CB8EEC','#B78EEC','#A78EEC','#958EEC',
+            '#8E9EEC','#8EB4EC','#8EC9EC','#8ED7EC','#8EE2EC','#8EECEA'
+        ];
 
-<script>
-const colors = [
-  '#8EEBEC','#8EECDC','#8EECCB','#8EECB3','#8EEC98',
-  '#A3EC8E','#BFEC8E','#E5EC8E','#ECDF8E','#ECD58E',
-  '#ECC48E','#ECB48E','#EC9E8E','#EC8E8F','#EC8EA5',
-  '#EC8EB6','#EC8EC7','#8ED7EC','#8EE2EC','#8EECEA',
-  '#E18EEC','#CB8EEC','#B78EEC','#A78EEC','#958EEC',
-  '#8E9EEC','#8EB4EC','#8EC9EC','#8ED7EC','#8EE2EC','#8EECEA'
-];
+        const container = document.getElementById('cards-container');
 
-// 画像配列（imagesフォルダ内）
-const images = [
-'images/work1.jpg',
-'images/work10.JPG',
-'images/work100.HEIC',
-'images/work101.JPG',
-'images/work102.HEIC',
-'images/work103.HEIC',
-'images/work104.HEIC',
-'images/work105.JPG',
-'images/work106.JPG',
-'images/work107.JPG',
-'images/work11.JPG',
-'images/work12.JPG',
-'images/work13.JPG',
-'images/work14.JPG',
-'images/work15.JPG',
-'images/work16.JPG',
-'images/work17.JPG',
-'images/work18.JPG',
-'images/work19.jpg',
-'images/work2.jpeg',
-'images/work20.jpeg',
-'images/work21.jpg',
-'images/work22.JPG',
-'images/work23.jpeg',
-'images/work24.JPG',
-'images/work25.HEIC',
-'images/work26.JPG',
-'images/work27.JPG',
-'images/work28.JPG',
-'images/work29.JPG',
-'images/work3.jpeg',
-'images/work30.HEIC',
-'images/work31.HEIC',
-'images/work32.HEIC',
-'images/work33.JPG',
-'images/work34.HEIC',
-'images/work35.HEIC',
-'images/work36.HEIC',
-'images/work37.HEIC',
-'images/work38.JPG',
-'images/work39.JPG',
-'images/work4.jpg',
-'images/work40.HEIC',
-'images/work41.JPG',
-'images/work42.HEIC',
-'images/work43.HEIC',
-'images/work44.HEIC',
-'images/work45.JPG',
-'images/work46.JPG',
-'images/work47.JPG',
-'images/work48.JPG',
-'images/work49.JPG',
-'images/work5.jpg',
-'images/work51.HEIC',
-'images/work52.HEIC',
-'images/work53.HEIC',
-'images/work54.HEIC',
-'images/work55.HEIC',
-'images/work56.JPG',
-'images/work57.jpg',
-'images/work58.HEIC',
-'images/work59.HEIC',
-'images/work6.jpg',
-'images/work60.HEIC',
-'images/work61.JPG',
-'images/work62.HEIC',
-'images/work63.JPG',
-'images/work64.HEIC',
-'images/work65.JPG',
-'images/work66.JPG',
-'images/work67.HEIC',
-'images/work68.HEIC',
-'images/work69.HEIC',
-'images/work7.JPG',
-'images/work70.JPG',
-'images/work71.JPG',
-'images/work72.JPG',
-'images/work73.HEIC',
-'images/work74.JPG',
-'images/work75.JPG',
-'images/work76.JPG',
-'images/work77.HEIC',
-'images/work78.JPG',
-'images/work79.HEIC',
-'images/work80.HEIC',
-'images/work81.JPG',
-'images/work82.HEIC',
-'images/work83.HEIC',
-'images/work84.JPG',
-'images/work85.JPG',
-'images/work86.HEIC',
-'images/work87.JPG',
-'images/work89.JPG',
-'images/work9.jpg',
-'images/work90.JPG',
-'images/work91.HEIC',
-'images/work92.JPG',
-'images/work93.HEIC',
-'images/work94.JPG',
-'images/work95.JPG',
-'images/work96.JPG',
-'images/work97.JPG',
-'images/work98.HEIC',
-'images/work99.HEIC'
-  // 必要に応じて追加
-];
+        // 画像ファイル名配列（拡張子混在OK）
+        const images = [
+            'images/work1.jpg',
+            'images/work2.png',
+            'images/work3.jpeg',
+            'images/work4.png',
+            'images/work5.jpg',
+            // 後から追加する場合もここに書き足すだけ
+        ];
 
-const container = document.getElementById('cards-container');
+        // 配列をランダムにシャッフル
+        function shuffle(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+            return array;
+        }
 
-// 配列ランダムシャッフル
-function shuffle(array) {
-    for (let i = array.length-1; i>0; i--) {
-        const j = Math.floor(Math.random()*(i+1));
-        [array[i], array[j]] = [array[j], array[i]];
-    }
-    return array;
-}
-const shuffledImages = shuffle(images);
+        const shuffledImages = shuffle(images);
 
-// カード生成
-shuffledImages.forEach((src, i) => {
-    const card = document.createElement('div');
-    card.className = 'card';
-    card.style.backgroundColor = colors[i % colors.length];
+        // カード生成
+        for (let i = 0; i < images.length; i++) {
+            const card = document.createElement('div');
+            card.className = 'card';
 
-    const img = document.createElement('img');
-    img.src = src;
-    img.alt = `Project ${i+1}`;
+            // 背景色は順番にループ
+            card.style.backgroundColor = colors[i % colors.length];
 
-    card.appendChild(img);
-    container.appendChild(card);
-});
+            // 画像追加
+            const img = document.createElement('img');
+            img.src = shuffledImages[i];  // ランダム画像
+            img.alt = `Project ${i+1}`;
 
-// Masonry初期化
-imagesLoaded(container, function() {
-    new Masonry(container, {
-        itemSelector: '.card',
-        columnWidth: '.grid-sizer',
-        percentPosition: true,
-        gutter: 16
-    });
-});
-</script>
+            card.appendChild(img);
+            container.appendChild(card);
+        }
+    </script>
 </body>
 </html>

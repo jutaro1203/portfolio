@@ -10,7 +10,11 @@ h1, h2 {
     font-family: 'Fredoka One', cursive;
 }
 
-a { text-decoration: none; color: #ff69b4; margin: 0 10px; }
+a { 
+    text-decoration: none; 
+    color: #ff69b4; 
+    margin: 0 10px; 
+}
 
 .site-header {
     background-color: #ffb6c1;
@@ -18,32 +22,151 @@ a { text-decoration: none; color: #ff69b4; margin: 0 10px; }
     text-align: center;
     box-shadow: 0 4px 6px rgba(0,0,0,0.1);
 }
-.site-header nav a:hover { color: #fff; }
 
-.hero { text-align: center; padding: 80px 20px; background-color: #ffe4e1; }
+.site-header nav a:hover { 
+    color: #fff; 
+}
 
-.skills { background-color: #fff0f5; padding: 50px 20px; text-align: center; }
-.skill-list { list-style: none; padding: 0; display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; }
-.skill-list li { background-color: #ffdde7; padding: 10px 20px; border-radius: 20px; font-weight: bold; }
+.hero { 
+    text-align: center; 
+    padding: 80px 20px; 
+    background-color: #ffe4e1; 
+}
 
-.projects { padding: 50px 20px; text-align: center; }
-.grid { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; }
+.skills { 
+    background-color: #fff0f5; 
+    padding: 50px 20px; 
+    text-align: center; 
+}
+
+.skill-list { 
+    list-style: none; 
+    padding: 0; 
+    display: flex; 
+    gap: 20px; 
+    justify-content: center; 
+    flex-wrap: wrap; 
+}
+
+.skill-list li { 
+    background-color: #ffdde7; 
+    padding: 10px 20px; 
+    border-radius: 20px; 
+    font-weight: bold; 
+}
+
+.projects { 
+    padding: 50px 20px; 
+    text-align: center; 
+    position: relative; 
+}
+
+/* 新しいGridレイアウト - Masonry風 */
+.works-grid {
+    columns: 4;
+    column-gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+@media (max-width: 1024px) {
+    .works-grid { columns: 3; }
+}
+
+@media (max-width: 768px) {
+    .works-grid { columns: 2; }
+}
+
+@media (max-width: 480px) {
+    .works-grid { columns: 1; }
+}
 
 .card {
+    break-inside: avoid;
+    margin-bottom: 20px;
     border-radius: 20px;
-    padding: 20px;
-    width: 180px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    transition: transform 0.3s ease;
+    padding: 15px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    transition: all 0.3s ease;
     text-align: center;
+    display: inline-block;
+    width: 100%;
+    box-sizing: border-box;
+    position: relative;
+    overflow: hidden;
 }
-.card img { width: 100%; border-radius: 10px; }
-.card:hover { transform: translateY(-10px); }
 
-.contact { background-color: #ffe4e1; padding: 50px 20px; text-align: center; }
-.contact form { display: flex; flex-direction: column; gap: 15px; max-width: 400px; margin: 0 auto; }
-.contact input, .contact textarea { padding: 10px; border-radius: 10px; border: 2px solid #ffb6c1; }
-.contact button { background-color: #ff69b4; color: white; border: none; border-radius: 10px; padding: 10px; cursor: pointer; font-weight: bold; }
-.contact button:hover { background-color: #ff1493; }
+.card img { 
+    width: 100%; 
+    height: auto;
+    border-radius: 10px; 
+    display: block;
+    transition: transform 0.3s ease;
+}
 
-.site-footer { background-color: #ffb6c1; text-align: center; padding: 20px; margin-top: 50px; }
+.card:hover { 
+    transform: translateY(-8px) rotate(1deg);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+}
+
+.card:hover img {
+    transform: scale(1.05);
+}
+
+/* ランダムな回転効果 */
+.card.rotate-left {
+    transform: rotate(-2deg);
+}
+
+.card.rotate-right {
+    transform: rotate(2deg);
+}
+
+.card:hover.rotate-left {
+    transform: translateY(-8px) rotate(-1deg) scale(1.02);
+}
+
+.card:hover.rotate-right {
+    transform: translateY(-8px) rotate(1deg) scale(1.02);
+}
+
+.contact { 
+    background-color: #ffe4e1; 
+    padding: 50px 20px; 
+    text-align: center; 
+}
+
+.contact form { 
+    display: flex; 
+    flex-direction: column; 
+    gap: 15px; 
+    max-width: 400px; 
+    margin: 0 auto; 
+}
+
+.contact input, .contact textarea { 
+    padding: 10px; 
+    border-radius: 10px; 
+    border: 2px solid #ffb6c1; 
+}
+
+.contact button { 
+    background-color: #ff69b4; 
+    color: white; 
+    border: none; 
+    border-radius: 10px; 
+    padding: 10px; 
+    cursor: pointer; 
+    font-weight: bold; 
+}
+
+.contact button:hover { 
+    background-color: #ff1493; 
+}
+
+.site-footer { 
+    background-color: #ffb6c1; 
+    text-align: center; 
+    padding: 20px; 
+    margin-top: 50px; 
+}

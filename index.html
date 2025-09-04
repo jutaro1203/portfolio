@@ -1,266 +1,217 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;700&display=swap" rel="stylesheet">
-    <style>
-        /* 共通スタイル（もともとのCSS） */
-        body {
-            font-family: 'Nunito', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #fff8f5;
-            color: #333;
-        }
-
-        h1, h2 {
-            font-family: 'Fredoka One', cursive;
-        }
-
-        a { text-decoration: none; color: #ff69b4; margin: 0 10px; }
-
-        .site-header {
-            background-color: #ffb6c1;
-            padding: 20px;
-            text-align: center;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        }
-        .site-header nav a:hover { color: #fff; }
-
-        .hero { text-align: center; padding: 80px 20px; background-color: #ffe4e1; }
-
-        .skills { background-color: #fff0f5; padding: 50px 20px; text-align: center; }
-        .skill-list { list-style: none; padding: 0; display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; }
-        .skill-list li { background-color: #ffdde7; padding: 10px 20px; border-radius: 20px; font-weight: bold; }
-
-        /* Contact */
-        .contact { background-color: #ffe4e1; padding: 50px 20px; text-align: center; }
-        .contact form { display: flex; flex-direction: column; gap: 15px; max-width: 400px; margin: 0 auto; }
-        .contact input, .contact textarea { padding: 10px; border-radius: 10px; border: 2px solid #ffb6c1; }
-        .contact button { background-color: #ff69b4; color: white; border: none; border-radius: 10px; padding: 10px; cursor: pointer; font-weight: bold; }
-        .contact button:hover { background-color: #ff1493; }
-
-        .site-footer { background-color: #ffb6c1; text-align: center; padding: 20px; margin-top: 50px; }
-
-        /* Works Masonry用追加CSS */
-        .grid {
-            margin: 0 auto;
-        }
-
-        /* カラム幅を決めるダミー要素 */
-        .grid-sizer {
-            width: 23%; /* 4列にする */
-        }
-
-        /* カード */
-        .grid-item {
-            background-color: #fff;
-            border-radius: 12px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            overflow: hidden;
-            margin-bottom: 16px;
-        }
-
-        .grid-item img {
-            display: block;
-            width: 100%;
-            height: auto;
-            border-radius: 8px;
-        }
-
-        /* ホバーで少し浮かせる */
-        .grid-item:hover {
-            transform: translateY(-5px);
-            transition: transform 0.3s ease;
-        }
-
-        /* レスポンシブ調整 */
-        @media (max-width: 1200px) {
-            .grid-sizer { width: 30%; } /* 3列 */
-        }
-        @media (max-width: 900px) {
-            .grid-sizer { width: 45%; } /* 2列 */
-        }
-        @media (max-width: 600px) {
-            .grid-sizer { width: 100%; } /* 1列 */
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portfolio</title>
+<link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <header class="site-header">
-        <h1>Portfolio</h1>
-        <nav>
-            <a href="#about">About</a>
-            <a href="#skills">Skills</a>
-            <a href="#works">Works</a>
-            <a href="#contact">Contact</a>
-        </nav>
-    </header>
+<header class="site-header">
+    <h1>Portfolio</h1>
+    <nav>
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#works">Works</a>
+        <a href="#contact">Contact</a>
+    </nav>
+</header>
 
-    <section id="about" class="hero">
-        <h2>Hello!</h2>
-        <p>This is a clean and colorful portfolio showcasing my work and skills.</p>
-    </section>
+<section id="about" class="hero">
+    <h2>Hello!</h2>
+    <p>This is a clean and colorful portfolio showcasing my work and skills.</p>
+</section>
 
-    <section id="skills" class="skills">
-        <h2>Skills</h2>
-        <ul class="skill-list">
-            <li>HTML / CSS / JavaScript</li>
-            <li>React / Next.js</li>
-            <li>UI/UX Design</li>
-            <li>Figma / Photoshop / Illustrator</li>
-        </ul>
-    </section>
+<section id="skills" class="skills">
+    <h2>Skills</h2>
+    <ul class="skill-list">
+        <li>HTML / CSS / JavaScript</li>
+        <li>React / Next.js</li>
+        <li>UI/UX Design</li>
+        <li>Figma / Photoshop / Illustrator</li>
+    </ul>
+</section>
 
-    <!-- Worksセクション Masonryに変更 -->
-    <section id="works" class="projects">
-        <h2>Works</h2>
-        <div class="grid">
-            <!-- カラム幅用ダミー -->
-            <div class="grid-sizer"></div>
+<section id="works" class="projects">
+    <h2>Works</h2>
+    <div class="grid" id="cards-container">
+        <div class="grid-sizer"></div> <!-- Masonry用 -->
+    </div>
+</section>
 
-            <!-- ここに全画像を貼る -->
-<div class="grid-item"><img src="images/work1.jpg" alt=""></div>
-<div class="grid-item"><img src="images/work10.JPG" alt=""></div>
-<div class="grid-item"><img src="images/work100.HEIC" alt=""></div>
-<div class="grid-item"><img src="images/work101.JPG" alt=""></div>
-<div class="grid-item"><img src="images/work102.HEIC" alt=""></div>
-<div class="grid-item"><img src="images/work103.HEIC" alt=""></div>
-<div class="grid-item"><img src="images/work104.HEIC" alt=""></div>
-<div class="grid-item"><img src="images/work105.JPG" alt=""></div>
-<div class="grid-item"><img src="images/work106.JPG" alt=""></div>
-<div class="grid-item"><img src="images/work107.JPG" alt=""></div>
-<div class="grid-item"><img src="images/work11.JPG" alt=""></div>
-<div class="grid-item"><img src="images/work12.JPG" alt=""></div>
-<div class="grid-item"><img src="images/work13.JPG" alt=""></div>
-<div class="grid-item"><img src="images/work14.JPG" alt=""></div>
-<div class="grid-item"><img src="images/work15.JPG" alt=""></div>
-<div class="grid-item"><img src="images/work16.JPG" alt=""></div>
-<div class="grid-item"><img src="images/work17.JPG" alt=""></div>
-<div class="grid-item"><img src="images/work18.JPG" alt=""></div>
-<div class="grid-item"><img src="images/work19.jpg" alt=""></div>
-<div class="grid-item"><img src="images/work2.jpeg" alt=""></div>
-<div class="grid-item"><img src="images/work20.jpeg" alt=""></div>
-<div class="grid-item"><img src="images/work21.jpg" alt=""></div>
-<div class="grid-item"><img src="images/work22.JPG" alt=""></div>
-<div class="grid-item"><img src="images/work23.jpeg" alt=""></div>
-<div class="grid-item"><img src="images/work24.JPG" alt=""></div>
-<div class="grid-item"><img src="images/work25.HEIC" alt=""></div>
-<div class="grid-item"><img src="images/work26.JPG" alt=""></div>
-<div class="grid-item"><img src="images/work27.JPG" alt=""></div>
-<div class="grid-item"><img src="images/work28.JPG" alt=""></div>
-<div class="grid-item"><img src="images/work29.JPG" alt=""></div>
-<div class="grid-item"><img src="images/work3.jpeg" alt=""></div>
-<div class="grid-item"><img src="images/work30.HEIC" alt=""></div>
-<div class="grid-item"><img src="images/work31.HEIC" alt=""></div>
-<div class="grid-item"><img src="images/work32.HEIC" alt=""></div>
-<div class="grid-item"><img src="images/work33.JPG" alt=""></div>
-<div class="grid-item"><img src="images/work34.HEIC" alt=""></div>
-<div class="grid-item"><img src="images/work35.HEIC" alt=""></div>
-<div class="grid-item"><img src="images/work36.HEIC" alt=""></div>
-<div class="grid-item"><img src="images/work37.HEIC" alt=""></div>
-<div class="grid-item"><img src="images/work38.JPG" alt=""></div>
-<div class="grid-item"><img src="images/work39.JPG" alt=""></div>
-<div class="grid-item"><img src="images/work4.jpg" alt=""></div>
-<div class="grid-item"><img src="images/work40.HEIC" alt=""></div>
-<div class="grid-item"><img src="images/work41.JPG" alt=""></div>
-<div class="grid-item"><img src="images/work42.HEIC" alt=""></div>
-<div class="grid-item"><img src="images/work43.HEIC" alt=""></div>
-<div class="grid-item"><img src="images/work44.HEIC" alt=""></div>
-<div class="grid-item"><img src="images/work45.JPG" alt=""></div>
-<div class="grid-item"><img src="images/work46.JPG" alt=""></div>
-<div class="grid-item"><img src="images/work47.JPG" alt=""></div>
-<div class="grid-item"><img src="images/work48.JPG" alt=""></div>
-<div class="grid-item"><img src="images/work49.JPG" alt=""></div>
-<div class="grid-item"><img src="images/work5.jpg" alt=""></div>
-<div class="grid-item"><img src="images/work51.HEIC" alt=""></div>
-<div class="grid-item"><img src="images/work52.HEIC" alt=""></div>
-<div class="grid-item"><img src="images/work53.HEIC" alt=""></div>
-<div class="grid-item"><img src="images/work54.HEIC" alt=""></div>
-<div class="grid-item"><img src="images/work55.HEIC" alt=""></div>
-<div class="grid-item"><img src="images/work56.JPG" alt=""></div>
-<div class="grid-item"><img src="images/work57.jpg" alt=""></div>
-<div class="grid-item"><img src="images/work58.HEIC" alt=""></div>
-<div class="grid-item"><img src="images/work59.HEIC" alt=""></div>
-<div class="grid-item"><img src="images/work6.jpg" alt=""></div>
-<div class="grid-item"><img src="images/work60.HEIC" alt=""></div>
-<div class="grid-item"><img src="images/work61.JPG" alt=""></div>
-<div class="grid-item"><img src="images/work62.HEIC" alt=""></div>
-<div class="grid-item"><img src="images/work63.JPG" alt=""></div>
-<div class="grid-item"><img src="images/work64.HEIC" alt=""></div>
-<div class="grid-item"><img src="images/work65.JPG" alt=""></div>
-<div class="grid-item"><img src="images/work66.JPG" alt=""></div>
-<div class="grid-item"><img src="images/work67.HEIC" alt=""></div>
-<div class="grid-item"><img src="images/work68.HEIC" alt=""></div>
-<div class="grid-item"><img src="images/work69.HEIC" alt=""></div>
-<div class="grid-item"><img src="images/work7.JPG" alt=""></div>
-<div class="grid-item"><img src="images/work70.JPG" alt=""></div>
-<div class="grid-item"><img src="images/work71.JPG" alt=""></div>
-<div class="grid-item"><img src="images/work72.JPG" alt=""></div>
-<div class="grid-item"><img src="images/work73.HEIC" alt=""></div>
-<div class="grid-item"><img src="images/work74.JPG" alt=""></div>
-<div class="grid-item"><img src="images/work75.JPG" alt=""></div>
-<div class="grid-item"><img src="images/work76.JPG" alt=""></div>
-<div class="grid-item"><img src="images/work77.HEIC" alt=""></div>
-<div class="grid-item"><img src="images/work78.JPG" alt=""></div>
-<div class="grid-item"><img src="images/work79.HEIC" alt=""></div>
-<div class="grid-item"><img src="images/work80.HEIC" alt=""></div>
-<div class="grid-item"><img src="images/work81.JPG" alt=""></div>
-<div class="grid-item"><img src="images/work82.HEIC" alt=""></div>
-<div class="grid-item"><img src="images/work83.HEIC" alt=""></div>
-<div class="grid-item"><img src="images/work84.JPG" alt=""></div>
-<div class="grid-item"><img src="images/work85.JPG" alt=""></div>
-<div class="grid-item"><img src="images/work86.HEIC" alt=""></div>
-<div class="grid-item"><img src="images/work87.JPG" alt=""></div>
-<div class="grid-item"><img src="images/work89.JPG" alt=""></div>
-<div class="grid-item"><img src="images/work9.jpg" alt=""></div>
-<div class="grid-item"><img src="images/work90.JPG" alt=""></div>
-<div class="grid-item"><img src="images/work91.HEIC" alt=""></div>
-<div class="grid-item"><img src="images/work92.JPG" alt=""></div>
-<div class="grid-item"><img src="images/work93.HEIC" alt=""></div>
-<div class="grid-item"><img src="images/work94.JPG" alt=""></div>
-<div class="grid-item"><img src="images/work95.JPG" alt=""></div>
-<div class="grid-item"><img src="images/work96.JPG" alt=""></div>
-<div class="grid-item"><img src="images/work97.JPG" alt=""></div>
-<div class="grid-item"><img src="images/work98.HEIC" alt=""></div>
-<div class="grid-item"><img src="images/work99.HEIC" alt=""></div>
-        </div>
-    </section>
+<section id="contact" class="contact">
+    <h2>Contact</h2>
+    <form>
+        <input type="text" placeholder="Name">
+        <input type="email" placeholder="Email">
+        <textarea placeholder="Message"></textarea>
+        <button type="submit">Send</button>
+    </form>
+</section>
 
-    <section id="contact" class="contact">
-        <h2>Contact</h2>
-        <form>
-            <input type="text" placeholder="Name">
-            <input type="email" placeholder="Email">
-            <textarea placeholder="Message"></textarea>
-            <button type="submit">Send</button>
-        </form>
-    </section>
+<footer class="site-footer">
+    <p>© 2025 Portfolio</p>
+</footer>
 
-    <footer class="site-footer">
-        <p>© 2025 Portfolio</p>
-    </footer>
+<!-- Masonry & imagesLoaded -->
+<script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
+<script src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.min.js"></script>
 
-    <!-- Masonryライブラリ -->
-    <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
-    <script src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.min.js"></script>
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            const grid = document.querySelector('.grid');
+<script>
+const colors = [
+  '#8EEBEC','#8EECDC','#8EECCB','#8EECB3','#8EEC98',
+  '#A3EC8E','#BFEC8E','#E5EC8E','#ECDF8E','#ECD58E',
+  '#ECC48E','#ECB48E','#EC9E8E','#EC8E8F','#EC8EA5',
+  '#EC8EB6','#EC8EC7','#8ED7EC','#8EE2EC','#8EECEA',
+  '#E18EEC','#CB8EEC','#B78EEC','#A78EEC','#958EEC',
+  '#8E9EEC','#8EB4EC','#8EC9EC','#8ED7EC','#8EE2EC','#8EECEA'
+];
 
-            imagesLoaded(grid, function () {
-                new Masonry(grid, {
-                    itemSelector: '.grid-item',
-                    columnWidth: '.grid-sizer',
-                    gutter: 16,
-                    percentPosition: true,
-                    fitWidth: true
-                });
-            });
-        });
-    </script>
+// 画像配列（例: images/work1.jpg など）
+const images = [
+'images/work1.jpg',
+'images/work10.JPG',
+'images/work100.HEIC',
+'images/work101.JPG',
+'images/work102.HEIC',
+'images/work103.HEIC',
+'images/work104.HEIC',
+'images/work105.JPG',
+'images/work106.JPG',
+'images/work107.JPG',
+'images/work11.JPG',
+'images/work12.JPG',
+'images/work13.JPG',
+'images/work14.JPG',
+'images/work15.JPG',
+'images/work16.JPG',
+'images/work17.JPG',
+'images/work18.JPG',
+'images/work19.jpg',
+'images/work2.jpeg',
+'images/work20.jpeg',
+'images/work21.jpg',
+'images/work22.JPG',
+'images/work23.jpeg',
+'images/work24.JPG',
+'images/work25.HEIC',
+'images/work26.JPG',
+'images/work27.JPG',
+'images/work28.JPG',
+'images/work29.JPG',
+'images/work3.jpeg',
+'images/work30.HEIC',
+'images/work31.HEIC',
+'images/work32.HEIC',
+'images/work33.JPG',
+'images/work34.HEIC',
+'images/work35.HEIC',
+'images/work36.HEIC',
+'images/work37.HEIC',
+'images/work38.JPG',
+'images/work39.JPG',
+'images/work4.jpg',
+'images/work40.HEIC',
+'images/work41.JPG',
+'images/work42.HEIC',
+'images/work43.HEIC',
+'images/work44.HEIC',
+'images/work45.JPG',
+'images/work46.JPG',
+'images/work47.JPG',
+'images/work48.JPG',
+'images/work49.JPG',
+'images/work5.jpg',
+'images/work51.HEIC',
+'images/work52.HEIC',
+'images/work53.HEIC',
+'images/work54.HEIC',
+'images/work55.HEIC',
+'images/work56.JPG',
+'images/work57.jpg',
+'images/work58.HEIC',
+'images/work59.HEIC',
+'images/work6.jpg',
+'images/work60.HEIC',
+'images/work61.JPG',
+'images/work62.HEIC',
+'images/work63.JPG',
+'images/work64.HEIC',
+'images/work65.JPG',
+'images/work66.JPG',
+'images/work67.HEIC',
+'images/work68.HEIC',
+'images/work69.HEIC',
+'images/work7.JPG',
+'images/work70.JPG',
+'images/work71.JPG',
+'images/work72.JPG',
+'images/work73.HEIC',
+'images/work74.JPG',
+'images/work75.JPG',
+'images/work76.JPG',
+'images/work77.HEIC',
+'images/work78.JPG',
+'images/work79.HEIC',
+'images/work80.HEIC',
+'images/work81.JPG',
+'images/work82.HEIC',
+'images/work83.HEIC',
+'images/work84.JPG',
+'images/work85.JPG',
+'images/work86.HEIC',
+'images/work87.JPG',
+'images/work89.JPG',
+'images/work9.jpg',
+'images/work90.JPG',
+'images/work91.HEIC',
+'images/work92.JPG',
+'images/work93.HEIC',
+'images/work94.JPG',
+'images/work95.JPG',
+'images/work96.JPG',
+'images/work97.JPG',
+'images/work98.HEIC',
+'images/work99.HEIC',
+  // 必要に応じて追加
+];
+
+const container = document.getElementById('cards-container');
+
+// 配列ランダムシャッフル
+function shuffle(array) {
+    for (let i = array.length-1; i>0; i--) {
+        const j = Math.floor(Math.random()*(i+1));
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
+}
+const shuffledImages = shuffle(images);
+
+// カード生成
+shuffledImages.forEach((src, i) => {
+    const card = document.createElement('div');
+    card.className = 'card';
+    card.style.backgroundColor = colors[i % colors.length];
+
+    const img = document.createElement('img');
+    img.src = src;
+    img.alt = `Project ${i+1}`;
+
+    card.appendChild(img);
+    container.appendChild(card);
+});
+
+// Masonry初期化
+imagesLoaded(container, function() {
+    new Masonry(container, {
+        itemSelector: '.card',
+        columnWidth: '.grid-sizer',
+        percentPosition: true,
+        gutter: 16
+    });
+});
+</script>
 </body>
 </html>

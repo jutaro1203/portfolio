@@ -33,11 +33,12 @@ a { text-decoration: none; color: #ff69b4; margin: 0 10px; }
 
 /* ===== Works Masonry ===== */
 .projects { padding: 50px 20px; }
-.grid { margin: 0 auto; }
-.grid-sizer { width: 23%; } /* 4列表示 */
+.grid { margin: 0 auto; position: relative; }
+.grid-sizer { width: 23%; } /* 4列固定 */
 .card {
     border-radius: 20px;
     margin-bottom: 16px;
+    padding: 10px;             /* 画像より少し余白 */
     overflow: hidden;
     text-align: center;
     transition: transform 0.3s ease;
@@ -47,6 +48,8 @@ a { text-decoration: none; color: #ff69b4; margin: 0 10px; }
     height: auto;
     display: block;
     border-radius: 10px;
+    object-fit: cover;
+    padding: 5px;               /* 背景色が見える */
 }
 .card:hover { transform: translateY(-5px); }
 

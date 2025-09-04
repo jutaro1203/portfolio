@@ -103,18 +103,55 @@
             
             // 画像の読み込み完了を待つ
             img.onload = function() {
-                // 小さめサイズに統一、画像のアスペクト比に基づいて微調整
+                // 画像のアスペクト比を正確に計算
                 const aspectRatio = this.naturalHeight / this.naturalWidth;
-                if (aspectRatio > 1.3) {
-                    // 縦長の画像
-                    card.style.height = '280px';
-                } else if (aspectRatio < 0.7) {
-                    // 横長の画像
-                    card.style.height = '200px';
+                const baseWidth = 200; // ベース幅
+                
+                // アスペクト比に基づいて正確なサイズを計算
+                let cardWidth, cardHeight;
+                
+                if (aspectRatio >= 1.5) {
+                    // 縦長 (1:2など)
+                    cardWidth = Math.min(baseWidth * 0.8, 160);
+                    cardHeight = cardWidth * aspectRatio + 30; // padding分を加算
+                } else if (aspectRatio >= 1.2) {
+                    // やや縦長 (3:4など)
+                    cardWidth = Math.min(baseWidth * 0.9, 180);
+                    cardHeight = cardWidth * aspectRatio + 30;
+                } else if (aspectRatio >= 0.9) {
+                    // 正方形に近い (1:1など)
+                    cardWidth = baseWidth;
+                    cardHeight = cardWidth * aspectRatio + 30;
+                } else if (aspectRatio >= 0.6) {
+                    // 横長 (16:9など)
+                    cardWidth = Math.min(baseWidth * 1.2, 240);
+                    cardHeight = cardWidth * aspectRatio + 30;
                 } else {
-                    // 正方形に近い画像
-                    card.style.height = '240px';
+                    // 超横長
+                    cardWidth = Math.min(baseWidth * 1.4, 280);
+                    cardHeight = cardWidth * aspectRatio + 30;
                 }
+                
+                // レスポンシブ対応
+                const screenWidth = window.innerWidth;
+                if (screenWidth <= 480) {
+                    // スマホ: 画面幅の45%程度
+                    cardWidth = Math.min(cardWidth, screenWidth * 0.45);
+                    cardHeight = cardWidth * aspectRatio + 30;
+                } else if (screenWidth <= 768) {
+                    // タブレット: サイズを少し縮小
+                    cardWidth *= 0.9;
+                    cardHeight = cardWidth * aspectRatio + 30;
+                }
+                
+                // カードサイズを設定
+                card.style.width = `${cardWidth}px`;
+                card.style.height = `${cardHeight}px`;
+                
+                // 画像サイズも調整（padding分を差し引く）
+                this.style.width = `${cardWidth - 30}px`;
+                this.style.height = `${(cardWidth - 30) * aspectRatio}px`;
+                this.style.objectFit = 'cover';
             };
             
             card.appendChild(img);

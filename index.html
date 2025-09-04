@@ -36,7 +36,7 @@
     <section id="works" class="projects">
         <h2>Works</h2>
         <div class="grid" id="cards-container">
-            <!-- JSで自動生成 -->
+            <!-- JSでカードを自動生成 -->
         </div>
     </section>
 
@@ -54,31 +54,31 @@
         <p>© 2025 Portfolio</p>
     </footer>
 
-    <!-- ランダムカラー＋カード自動生成JS -->
+    <!-- カード自動生成＋順番配色 -->
     <script>
         const colors = [
             '#8EEBEC','#8EECDC','#8EECCB','#8EECB3','#8EEC98',
             '#A3EC8E','#BFEC8E','#E5EC8E','#ECDF8E','#ECD58E',
             '#ECC48E','#ECB48E','#EC9E8E','#EC8E8F','#EC8EA5',
-            '#EC8EB6','#EC8EC7','#EC8ED6','#8EECEA','#E18EEC',
-            '#CB8EEC','#B78EEC','#A78EEC','#958EEC','#8E9EEC',
-            '#8EB4EC','#8EC9EC','#8ED7EC','#8EE2EC','#8EECEA'
+            '#EC8EB6','#EC8EC7','#8ED7EC','#8EE2EC','#8EECEA',
+            '#E18EEC','#CB8EEC','#B78EEC','#A78EEC','#958EEC',
+            '#8E9EEC','#8EB4EC','#8EC9EC','#8ED7EC','#8EE2EC','#8EECEA'
         ];
 
-        const imageCount = 100; // 画像の枚数に合わせて変更
+        const imageCount = 100; // 表示する画像の枚数
         const container = document.getElementById('cards-container');
 
         for (let i = 1; i <= imageCount; i++) {
             const card = document.createElement('div');
             card.className = 'card';
 
-            // ランダム背景色
-            const randomColor = colors[Math.floor(Math.random() * colors.length)];
-            card.style.backgroundColor = randomColor;
+            // 順番に色を割り当て
+            const colorIndex = (i - 1) % colors.length;
+            card.style.backgroundColor = colors[colorIndex];
 
             // 画像を追加
             const img = document.createElement('img');
-            img.src = `images/work${i}.png`; // images/work1.png 〜 work100.png を用意
+            img.src = `images/work${i}.png`; // images/work1.png ～ work100.png
             img.alt = `Project ${i}`;
 
             card.appendChild(img);
@@ -87,4 +87,3 @@
     </script>
 </body>
 </html>
-

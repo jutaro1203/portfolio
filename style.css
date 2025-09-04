@@ -10,7 +10,11 @@ h1, h2 {
     font-family: 'Fredoka One', cursive;
 }
 
-a { text-decoration: none; color: #ff69b4; margin: 0 10px; }
+a { 
+    text-decoration: none; 
+    color: #ff69b4; 
+    margin: 0 10px; 
+}
 
 .site-header {
     background-color: #ffb6c1;
@@ -20,30 +24,101 @@ a { text-decoration: none; color: #ff69b4; margin: 0 10px; }
 }
 .site-header nav a:hover { color: #fff; }
 
-.hero { text-align: center; padding: 80px 20px; background-color: #ffe4e1; }
+.hero { 
+    text-align: center; 
+    padding: 80px 20px; 
+    background-color: #ffe4e1; 
+}
 
-.skills { background-color: #fff0f5; padding: 50px 20px; text-align: center; }
-.skill-list { list-style: none; padding: 0; display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; }
-.skill-list li { background-color: #ffdde7; padding: 10px 20px; border-radius: 20px; font-weight: bold; }
+.skills { 
+    background-color: #fff0f5; 
+    padding: 50px 20px; 
+    text-align: center; 
+}
+.skill-list { 
+    list-style: none; 
+    padding: 0; 
+    display: flex; 
+    gap: 20px; 
+    justify-content: center; 
+    flex-wrap: wrap; 
+}
+.skill-list li { 
+    background-color: #ffdde7; 
+    padding: 10px 20px; 
+    border-radius: 20px; 
+    font-weight: bold; 
+}
 
-.projects { padding: 50px 20px; text-align: center; }
-.grid { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; }
+.projects { 
+    padding: 50px 20px; 
+    text-align: center; 
+}
+
+/* --- Pinterest風 Masonry Layout --- */
+.grid {
+    column-count: 3;      /* カラム数（画面サイズに合わせて調整可能） */
+    column-gap: 20px;     /* カラムの間隔 */
+    margin: 0 auto;
+    max-width: 1200px;    /* 最大幅を設定すると整いやすい */
+}
 
 .card {
+    display: inline-block; /* カラム内で縦に積まれる */
+    margin: 0 0 20px;
+    width: 100%;           /* カラム幅いっぱいに広がる */
     border-radius: 20px;
-    padding: 20px;
-    width: 180px;
+    padding: 10px;
+    background: #fff;      /* 白ベースで画像を引き立てる */
     box-shadow: 0 4px 6px rgba(0,0,0,0.1);
     transition: transform 0.3s ease;
-    text-align: center;
 }
-.card img { width: 100%; border-radius: 10px; }
-.card:hover { transform: translateY(-10px); }
 
-.contact { background-color: #ffe4e1; padding: 50px 20px; text-align: center; }
-.contact form { display: flex; flex-direction: column; gap: 15px; max-width: 400px; margin: 0 auto; }
-.contact input, .contact textarea { padding: 10px; border-radius: 10px; border: 2px solid #ffb6c1; }
-.contact button { background-color: #ff69b4; color: white; border: none; border-radius: 10px; padding: 10px; cursor: pointer; font-weight: bold; }
-.contact button:hover { background-color: #ff1493; }
+.card img { 
+    width: 100%; 
+    height: auto; 
+    border-radius: 10px; 
+    display: block;
+}
 
-.site-footer { background-color: #ffb6c1; text-align: center; padding: 20px; margin-top: 50px; }
+.card:hover { 
+    transform: translateY(-10px); 
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 800px) {
+    .grid { column-count: 2; }
+}
+@media (max-width: 500px) {
+    .grid { column-count: 1; }
+}
+
+.contact { 
+    background-color: #ffe4e1; 
+    padding: 50px 20px; 
+    text-align: center; 
+}
+.contact form { 
+    display: flex; 
+    flex-direction: column; 
+    gap: 15px; 
+    max-width: 400px; 
+    margin: 0 auto; 
+}
+.contact input, 
+.contact textarea { 
+    padding: 10px; 
+    border-radius: 10px; 
+    border: 2px solid #ffb6c1; 
+}
+.contact button { 
+    background-color: #ff69b4; 
+    color: white; 
+    border: none; 
+    border-radius: 10px; 
+    padding: 10px; 
+    cursor: pointer; 
+    font-weight: bold; 
+}
+.contact button:hover { 
+    background-color: #ff1493

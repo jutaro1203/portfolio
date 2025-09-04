@@ -19,7 +19,7 @@
 
   <section id="about" class="hero">
     <h2>Hello!</h2>
-    <p>This is a clean and colorful portfolio showcasing my work and skills.</p>
+    <p>This is a colorful portfolio showcasing my work and skills.</p>
   </section>
 
   <section id="skills" class="skills">
@@ -35,13 +35,17 @@
   <section id="works" class="projects">
     <h2>Works</h2>
     <div class="grid">
-      <div class="card">
+      <div class="card project-card">
         <img src="images/work1.png" alt="Project 1 screenshot">
         <p>Project 1 description</p>
       </div>
-      <div class="card">
+      <div class="card project-card">
         <img src="images/work2.png" alt="Project 2 screenshot">
         <p>Project 2 description</p>
+      </div>
+      <div class="card project-card">
+        <img src="images/work3.png" alt="Project 3 screenshot">
+        <p>Project 3 description</p>
       </div>
     </div>
   </section>
@@ -59,6 +63,25 @@
   <footer class="site-footer">
     <p>© 2025 Portfolio</p>
   </footer>
+
+  <!-- ランダムカラー用JavaScript -->
+  <script>
+    const colors = [
+      '#8EEBEC','#8EECDC','#8EECCB','#8EECB3','#8EEC98',
+      '#A3EC8E','#BFEC8E','#E5EC8E','#ECDF8E','#ECD58E',
+      '#ECC48E','#ECB48E','#EC9E8E','#EC8E8F','#EC8EA5',
+      '#EC8EB6','#EC8EC7','#EC8ED6','#EC8EE5','#E18EEC',
+      '#CB8EEC','#B78EEC','#A78EEC','#958EEC','#8E9EEC',
+      '#8EB4EC','#8EC9EC','#8ED7EC','#8EE2EC','#8EECEA'
+    ];
+
+    const cards = document.querySelectorAll('.project-card');
+
+    cards.forEach(card => {
+      const randomColor = colors[Math.floor(Math.random() * colors.length)];
+      card.style.backgroundColor = randomColor;
+      card.style.color = '#333'; // 文字色固定
+    });
+  </script>
 </body>
 </html>
-

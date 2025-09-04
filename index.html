@@ -1,44 +1,128 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pinterest風 Masonry Layout</title>
-  <style>
-    body {
-      font-family: sans-serif;
-      background: #f4f4f4;
-      margin: 0;
-      padding: 20px;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* 共通スタイル（もともとのCSS） */
+        body {
+            font-family: 'Nunito', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #fff8f5;
+            color: #333;
+        }
 
-    /* Masonryの親 */
-    .grid {
-      margin: 0 auto;
-    }
+        h1, h2 {
+            font-family: 'Fredoka One', cursive;
+        }
 
-    /* カード */
-    .grid-item {
-      margin-bottom: 16px;
-      background: #fff;
-      border-radius: 12px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-      overflow: hidden;
-    }
+        a { text-decoration: none; color: #ff69b4; margin: 0 10px; }
 
-    .grid-item img {
-      display: block;
-      width: 100%;
-      height: auto;
-    }
-  </style>
+        .site-header {
+            background-color: #ffb6c1;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .site-header nav a:hover { color: #fff; }
+
+        .hero { text-align: center; padding: 80px 20px; background-color: #ffe4e1; }
+
+        .skills { background-color: #fff0f5; padding: 50px 20px; text-align: center; }
+        .skill-list { list-style: none; padding: 0; display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; }
+        .skill-list li { background-color: #ffdde7; padding: 10px 20px; border-radius: 20px; font-weight: bold; }
+
+        /* Contact */
+        .contact { background-color: #ffe4e1; padding: 50px 20px; text-align: center; }
+        .contact form { display: flex; flex-direction: column; gap: 15px; max-width: 400px; margin: 0 auto; }
+        .contact input, .contact textarea { padding: 10px; border-radius: 10px; border: 2px solid #ffb6c1; }
+        .contact button { background-color: #ff69b4; color: white; border: none; border-radius: 10px; padding: 10px; cursor: pointer; font-weight: bold; }
+        .contact button:hover { background-color: #ff1493; }
+
+        .site-footer { background-color: #ffb6c1; text-align: center; padding: 20px; margin-top: 50px; }
+
+        /* Works Masonry用追加CSS */
+        .grid {
+            margin: 0 auto;
+        }
+
+        /* カラム幅を決めるダミー要素 */
+        .grid-sizer {
+            width: 23%; /* 4列にする */
+        }
+
+        /* カード */
+        .grid-item {
+            background-color: #fff;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            overflow: hidden;
+            margin-bottom: 16px;
+        }
+
+        .grid-item img {
+            display: block;
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        /* ホバーで少し浮かせる */
+        .grid-item:hover {
+            transform: translateY(-5px);
+            transition: transform 0.3s ease;
+        }
+
+        /* レスポンシブ調整 */
+        @media (max-width: 1200px) {
+            .grid-sizer { width: 30%; } /* 3列 */
+        }
+        @media (max-width: 900px) {
+            .grid-sizer { width: 45%; } /* 2列 */
+        }
+        @media (max-width: 600px) {
+            .grid-sizer { width: 100%; } /* 1列 */
+        }
+    </style>
 </head>
 <body>
+    <header class="site-header">
+        <h1>Portfolio</h1>
+        <nav>
+            <a href="#about">About</a>
+            <a href="#skills">Skills</a>
+            <a href="#works">Works</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
 
-  <h1>Pinterest風 Masonry Layout</h1>
+    <section id="about" class="hero">
+        <h2>Hello!</h2>
+        <p>This is a clean and colorful portfolio showcasing my work and skills.</p>
+    </section>
 
-  <!-- Masonry用の親コンテナ -->
-  <div class="grid">
+    <section id="skills" class="skills">
+        <h2>Skills</h2>
+        <ul class="skill-list">
+            <li>HTML / CSS / JavaScript</li>
+            <li>React / Next.js</li>
+            <li>UI/UX Design</li>
+            <li>Figma / Photoshop / Illustrator</li>
+        </ul>
+    </section>
+
+    <!-- Worksセクション Masonryに変更 -->
+    <section id="works" class="projects">
+        <h2>Works</h2>
+        <div class="grid">
+            <!-- カラム幅用ダミー -->
+            <div class="grid-sizer"></div>
+
+            <!-- ここに全画像を貼る -->
 <div class="grid-item"><img src="images/work1.jpg" alt=""></div>
 <div class="grid-item"><img src="images/work10.JPG" alt=""></div>
 <div class="grid-item"><img src="images/work100.HEIC" alt=""></div>
@@ -143,28 +227,40 @@
 <div class="grid-item"><img src="images/work97.JPG" alt=""></div>
 <div class="grid-item"><img src="images/work98.HEIC" alt=""></div>
 <div class="grid-item"><img src="images/work99.HEIC" alt=""></div>
-  </div>
+        </div>
+    </section>
 
-  <!-- Masonryライブラリ（CDNから読み込み） -->
-  <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
-  <!-- 画像の読み込みを待ってからMasonryを実行するためのライブラリ -->
-  <script src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.min.js"></script>
+    <section id="contact" class="contact">
+        <h2>Contact</h2>
+        <form>
+            <input type="text" placeholder="Name">
+            <input type="email" placeholder="Email">
+            <textarea placeholder="Message"></textarea>
+            <button type="submit">Send</button>
+        </form>
+    </section>
 
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      const grid = document.querySelector('.grid');
+    <footer class="site-footer">
+        <p>© 2025 Portfolio</p>
+    </footer>
 
-      // 画像の読み込みを待ってからMasonryを適用
-      imagesLoaded(grid, function () {
-        new Masonry(grid, {
-          itemSelector: '.grid-item',
-          columnWidth: '.grid-item',
-          gutter: 16,
-          fitWidth: true
+    <!-- Masonryライブラリ -->
+    <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
+    <script src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.min.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const grid = document.querySelector('.grid');
+
+            imagesLoaded(grid, function () {
+                new Masonry(grid, {
+                    itemSelector: '.grid-item',
+                    columnWidth: '.grid-sizer',
+                    gutter: 16,
+                    percentPosition: true,
+                    fitWidth: true
+                });
+            });
         });
-      });
-    });
-  </script>
-
+    </script>
 </body>
 </html>

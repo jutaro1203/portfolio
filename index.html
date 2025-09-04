@@ -103,17 +103,17 @@
             
             // 画像の読み込み完了を待つ
             img.onload = function() {
-                // 画像のアスペクト比に基づいてカードの高さを調整
+                // 小さめサイズに統一、画像のアスペクト比に基づいて微調整
                 const aspectRatio = this.naturalHeight / this.naturalWidth;
-                if (aspectRatio > 1.2) {
+                if (aspectRatio > 1.3) {
                     // 縦長の画像
-                    card.style.minHeight = '320px';
-                } else if (aspectRatio < 0.8) {
+                    card.style.height = '280px';
+                } else if (aspectRatio < 0.7) {
                     // 横長の画像
-                    card.style.minHeight = '180px';
+                    card.style.height = '200px';
                 } else {
                     // 正方形に近い画像
-                    card.style.minHeight = '250px';
+                    card.style.height = '240px';
                 }
             };
             

@@ -61,23 +61,45 @@ a {
 }
 
 /* ワークセクション */
-.projects { 
-    padding: 50px 20px; 
-    text-align: center; 
-    position: relative; 
+/* --- WORKS セクション（修正版） --- */
+.projects {
+    position: relative;
+    padding: 80px 20px;
+    text-align: center;
+    color: #fff;
+    background-color: transparent; /* 背景色を透明にして画像を見えるように */
+    overflow: visible;
+}
 
-    /* 背景画像を固定（動かない・スクロールしない） */
-    background-image: url("work29.jpg");
+/* 背景画像を疑似要素に配置（パスは下で確認） */
+.projects::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 0; /* カードより後ろ */
+    pointer-events: none;
+
+    /* ここを自分の画像パスに合わせてください */
+    background-image: url("images/work3.jpeg");
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
-    background-attachment: fixed;
 
-    color: #fff;
-    overflow: hidden; /* transform が背景に影響しないように */
+    /* --- 固定表示にしたい場合は下の行のコメントを外す --- */
+    /* background-attachment: fixed; */
 }
 
-/* グリッドレイアウト */
+/* セクション内コンテンツは疑似要素の上に出す */
+.projects h2,
+.works-grid {
+    position: relative;
+    z-index: 1;
+}
+
+/* works-grid（カードグリッド）はこれまでどおり */
 .works-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
@@ -86,15 +108,15 @@ a {
     margin: 0 auto;
 }
 
-/* カード */
+/* カードは画像の上に出すので z-index を明示 */
 .card {
+    position: relative;
+    z-index: 2;
+    background-color: #fff; /* カード自体は白で浮かせる */
     border-radius: 20px;
     padding: 15px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.15);
     transition: all 0.3s ease;
-    text-align: center;
-    box-sizing: border-box;
-    position: relative;
     overflow: hidden;
     display: flex;
     justify-content: center;
@@ -200,5 +222,6 @@ a {
     .card { padding: 10px; }
     .contact input, .contact textarea, .contact button { font-size: 0.9rem; }
 }
+
 
 

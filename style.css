@@ -61,39 +61,41 @@ a {
     position: relative; 
 }
 
-/* 新しいGridレイアウト - Masonry風 */
+/* 新しいGridレイアウト - 横並び複数枚 */
 .works-grid {
-    columns: 4;
-    column-gap: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
     max-width: 1200px;
     margin: 0 auto;
-}
-
-@media (max-width: 1024px) {
-    .works-grid { columns: 3; }
-}
-
-@media (max-width: 768px) {
-    .works-grid { columns: 2; }
-}
-
-@media (max-width: 480px) {
-    .works-grid { columns: 1; }
+    justify-content: center;
 }
 
 .card {
-    break-inside: avoid;
     margin-bottom: 20px;
     border-radius: 20px;
-    padding: 15px;
+    padding: 12px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.15);
     transition: all 0.3s ease;
     text-align: center;
-    display: inline-block;
-    width: 100%;
     box-sizing: border-box;
     position: relative;
     overflow: hidden;
+    width: 200px;
+    flex-shrink: 0;
+}
+
+@media (max-width: 1024px) {
+    .card { width: 180px; }
+}
+
+@media (max-width: 768px) {
+    .card { width: 160px; }
+}
+
+@media (max-width: 480px) {
+    .card { width: calc(50% - 10px); }
+    .works-grid { gap: 15px; }
 }
 
 .card img { 

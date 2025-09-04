@@ -1,53 +1,27 @@
-/* 全体設定 */
+/* ===== 共通スタイル ===== */
 body {
     font-family: 'Nunito', sans-serif;
-    background-color: #fff8f5;
     margin: 0;
-    padding: 20px;
+    padding: 0;
+    background-color: #fff8f5;
     color: #333;
 }
 
-h1 {
-    text-align: center;
+h1, h2 {
     font-family: 'Fredoka One', cursive;
-    margin-bottom: 40px;
 }
 
-/* Masonryの親コンテナ */
-.grid {
-    margin: 0 auto;
-}
+a { text-decoration: none; color: #ff69b4; margin: 0 10px; }
 
-/* カード */
-.grid-item {
-    background-color: #fff;
-    border-radius: 12px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    overflow: hidden;
-    margin-bottom: 16px; /* 下だけ隙間 */
+.site-header {
+    background-color: #ffb6c1;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
 }
+.site-header nav a:hover { color: #fff; }
 
-/* 画像 */
-.grid-item img {
-    display: block;
-    width: 100%;   /* カード幅に合わせる */
-    height: auto;  /* 縦横比を維持 */
-    border-radius: 8px;
-}
+.hero { text-align: center; padding: 80px 20px; background-color: #ffe4e1; }
 
-/* ホバーでちょっと浮かせる演出 */
-.grid-item:hover {
-    transform: translateY(-5px);
-    transition: transform 0.3s ease;
-}
-
-/* レスポンシブ対応（列数を可変にしたい場合はJSのcolumnWidthで調整） */
-@media (max-width: 1200px) {
-    .grid-item { width: 30%; }
-}
-@media (max-width: 900px) {
-    .grid-item { width: 45%; }
-}
-@media (max-width: 600px) {
-    .grid-item { width: 90%; }
-}
+.skills { background-color: #fff0f5; padding: 50px 20px; text-align: center; }
+.skill

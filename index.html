@@ -54,8 +54,8 @@
         <p>© 2025 Portfolio</p>
     </footer>
 
-    <!-- カード自動生成＋順番配色 -->
     <script>
+        // 順番に使う背景色
         const colors = [
             '#8EEBEC','#8EECDC','#8EECCB','#8EECB3','#8EEC98',
             '#A3EC8E','#BFEC8E','#E5EC8E','#ECDF8E','#ECD58E',
@@ -65,21 +65,41 @@
             '#8E9EEC','#8EB4EC','#8EC9EC','#8ED7EC','#8EE2EC','#8EECEA'
         ];
 
-        const imageCount = 100; // 表示する画像の枚数
         const container = document.getElementById('cards-container');
 
-        for (let i = 1; i <= imageCount; i++) {
+        // 画像ファイル名配列（拡張子混在OK）
+        const images = [
+            'images/work1.jpg',
+            'images/work2.png',
+            'images/work3.jpeg',
+            'images/work4.png',
+            'images/work5.jpg',
+            // 後から追加する場合もここに書き足すだけ
+        ];
+
+        // 配列をランダムにシャッフル
+        function shuffle(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+            return array;
+        }
+
+        const shuffledImages = shuffle(images);
+
+        // カード生成
+        for (let i = 0; i < images.length; i++) {
             const card = document.createElement('div');
             card.className = 'card';
 
-            // 順番に色を割り当て
-            const colorIndex = (i - 1) % colors.length;
-            card.style.backgroundColor = colors[colorIndex];
+            // 背景色は順番にループ
+            card.style.backgroundColor = colors[i % colors.length];
 
-            // 画像を追加
+            // 画像追加
             const img = document.createElement('img');
-            img.src = `images/work${i}.png`; // images/work1.png ～ work100.png
-            img.alt = `Project ${i}`;
+            img.src = shuffledImages[i];  // ランダム画像
+            img.alt = `Project ${i+1}`;
 
             card.appendChild(img);
             container.appendChild(card);

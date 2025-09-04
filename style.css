@@ -6,7 +6,10 @@ body {
     color: #333;
 }
 
-h1, h2 { font-family: 'Fredoka One', cursive; }
+h1, h2 {
+    font-family: 'Fredoka One', cursive;
+}
+
 a { text-decoration: none; color: #ff69b4; margin: 0 10px; }
 
 .site-header {
@@ -23,6 +26,20 @@ a { text-decoration: none; color: #ff69b4; margin: 0 10px; }
 .skill-list { list-style: none; padding: 0; display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; }
 .skill-list li { background-color: #ffdde7; padding: 10px 20px; border-radius: 20px; font-weight: bold; }
 
+.projects { padding: 50px 20px; text-align: center; }
+.grid { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; }
+
+.card {
+    border-radius: 20px;
+    padding: 20px;
+    width: 180px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+    text-align: center;
+}
+.card img { width: 100%; border-radius: 10px; }
+.card:hover { transform: translateY(-10px); }
+
 .contact { background-color: #ffe4e1; padding: 50px 20px; text-align: center; }
 .contact form { display: flex; flex-direction: column; gap: 15px; max-width: 400px; margin: 0 auto; }
 .contact input, .contact textarea { padding: 10px; border-radius: 10px; border: 2px solid #ffb6c1; }
@@ -30,33 +47,3 @@ a { text-decoration: none; color: #ff69b4; margin: 0 10px; }
 .contact button:hover { background-color: #ff1493; }
 
 .site-footer { background-color: #ffb6c1; text-align: center; padding: 20px; margin-top: 50px; }
-
-/* ===== Works Masonry ===== */
-.projects { padding: 50px 20px; }
-.grid { margin: 0 auto; position: relative; }
-.grid-sizer { width: 23%; } /* 4列固定 */
-.card {
-    border-radius: 20px;
-    margin-bottom: 16px;
-    padding: 8px;               /* 画像より少し余白 */
-    overflow: hidden;
-    text-align: center;
-    transition: transform 0.3s ease;
-    box-sizing: border-box;      /* paddingも幅に含める */
-}
-
-.card img {
-    width: 100%;
-    height: auto;
-    display: block;
-    border-radius: 10px;
-    object-fit: cover;           /* カード内で比率維持 */
-    padding: 5px;                /* 背景色が見える */
-}
-
-.card:hover { transform: translateY(-5px); }
-
-/* レスポンシブ */
-@media (max-width: 1200px) { .grid-sizer { width: 30%; } }
-@media (max-width: 900px)  { .grid-sizer { width: 45%; } }
-@media (max-width: 600px)  { .grid-sizer { width: 100%; } }

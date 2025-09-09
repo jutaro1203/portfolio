@@ -147,35 +147,31 @@ footer {
     margin-top: 2rem;
 }
 
-/* -------------- Aboutセクションの丸 -------------- */
+/* 丸横並びコンテナ */
+.rainbow-circle-container {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap; /* スマホで自動改行 */
+    margin-top: 2rem;
+}
 .rainbow-circle {
-    min-width: 250px;
-    min-height: 250px;
-    padding: 30px;
-    margin: 2rem auto;
+    min-width: 180px;
+    min-height: 180px;
+    padding: 20px;
     border-radius: 50%;
     background: linear-gradient(45deg,#ff9a9e,#b3e5ff,#d7b3ff);
+    
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
-    transition: all 0.3s ease;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-    max-width: 90%;
-    height: auto;
-}
-
-.rainbow-circle ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    font-size: 1rem;
+    
     color: white;
     font-weight: bold;
-}
-
-.rainbow-circle li {
-    margin: 0.5rem 0;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    cursor: default;
 }
 
 .rainbow-circle:hover {
@@ -210,19 +206,20 @@ footer {
 
 <section id="about">
     <h2 style="text-align: center;">About</h2>
-    <!-- もともとの文章 -->
-    <p>“Welcome to my portfolio, where I present moments capturing the world as I see it.</p>
-    <p>Thank you for taking the time to visit.</p>
-    <p>I hope these precious moments leave a lasting impression.</p>
-
-    <!-- ナビボタン風のレインボー丸 -->
-    <div class="rainbow-circle">
-        <ul>
-            <li>Communication and team management in store operations</li>
-            <li>Data analysis and design experience</li>
-            <li>Project planning and execution</li>
-            <li>HTML / CSS / JavaScript / O365</li>
-        </ul>
+    <p style="text-align: center;">
+        “Welcome to my portfolio, where I present moments capturing the world as I see it.
+    </p>
+    <p style="text-align: center;">
+        Thank you for taking the time to visit.
+    </p>
+    <p style="text-align: center;">
+        I hope these precious moments leave a lasting impression.
+    </p>
+    <div class="rainbow-circle-container">
+        <div class="rainbow-circle">Communication and team management in store operations</div>
+        <div class="rainbow-circle">Data analysis and design experience</div>
+        <div class="rainbow-circle">Project planning and execution</div>
+        <div class="rainbow-circle">HTML / CSS / JavaScript / O365</div>
     </div>
 </section>
 

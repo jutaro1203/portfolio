@@ -58,9 +58,7 @@
         '#E18EEC','#CB8EEC','#B78EEC','#A78EEC','#958EEC',
         '#8E9EEC','#8EB4EC','#8EC9EC','#8ED7EC','#8EE2EC','#8EECEA'
     ];
-
     const container = document.getElementById('cards-container');
-
     // 画像配列
     const images = [
   { src: 'images/work1.jpg' },
@@ -169,7 +167,7 @@
   { src: 'images/work98.jpg' },
   { src: 'images/work99.jpg' }
     ];
-
+    
     // 配列をランダムにシャッフル
     function shuffle(array) {
         for (let i = array.length - 1; i > 0; i--) {
@@ -178,56 +176,54 @@
         }
         return array;
     }
-
     const shuffledImages = shuffle([...images]);
-
-    // ランダムな回転クラス
+    
+    // ランダムな回転クラス（無効化）
     function getRandomRotation() {
-        const rotations = ['', 'rotate-left', 'rotate-right'];
-        return rotations[Math.floor(Math.random() * rotations.length)];
+        // 重なりを防ぐため回転を無効化
+        return '';
     }
-
+    
     // カード生成
     shuffledImages.forEach((image, i) => {
         const card = document.createElement('div');
         card.className = `card ${getRandomRotation()}`;
         card.style.backgroundColor = colors[i % colors.length];
-
+        
         const img = document.createElement('img');
         img.src = image.src;
         img.alt = image.src.split('/').pop(); // ファイル名をaltに設定
-
+        
         img.onload = function() {
             const aspectRatio = this.naturalHeight / this.naturalWidth;
             const baseWidth = 200;
             let cardWidth, cardHeight;
-
+            
             if (aspectRatio >= 1.5) cardWidth = Math.min(baseWidth*0.8,160);
             else if (aspectRatio >= 1.2) cardWidth = Math.min(baseWidth*0.9,180);
             else if (aspectRatio >= 0.9) cardWidth = baseWidth;
             else if (aspectRatio >= 0.6) cardWidth = Math.min(baseWidth*1.2,240);
             else cardWidth = Math.min(baseWidth*1.4,280);
-
+            
             cardHeight = cardWidth * aspectRatio + 30;
-
+            
             const screenWidth = window.innerWidth;
             if (screenWidth <= 480) cardWidth = Math.min(cardWidth, screenWidth*0.45);
             else if (screenWidth <= 768) cardWidth *= 0.9;
-
+            
             cardHeight = cardWidth * aspectRatio + 30;
-
+            
             card.style.width = `${cardWidth}px`;
             card.style.height = `${cardHeight}px`;
-
             this.style.width = `${cardWidth - 30}px`;
             this.style.height = `${(cardWidth - 30) * aspectRatio}px`;
             this.style.objectFit = 'cover';
         };
-
+        
         card.appendChild(img);
         container.appendChild(card);
     });
-
+    
     // スクロール時のアニメーション
     const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
     const observer = new IntersectionObserver((entries) => {
@@ -238,7 +234,7 @@
             }
         });
     }, observerOptions);
-
+    
     setTimeout(() => {
         document.querySelectorAll('.card').forEach((card, index) => {
             card.style.opacity = '0';
@@ -250,7 +246,3 @@
 </script>
 </body>
 </html>
-
-
-
-

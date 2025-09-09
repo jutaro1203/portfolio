@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Name - フォトグラファー</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* ヘッダー */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 1rem;
+            border: 5px solid #667eea;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 0.5rem;
+            font-size: 2.5rem;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .subtitle {
+            color: #666;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 1rem;
+        }
+
+        .contact-item {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            background: linear-gradient(45deg, #ff9a9e, #fecfef);
+            color: white;
+            transition: transform 0.3s ease;
+        }
+
+        .contact-item:hover {
+            transform: translateY(-2px);
+        }
+
+        /* ナビゲーション */
+        nav {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 50px;
+            padding: 1rem;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+            padding: 0.5rem 1.5rem;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+        }
+
+        nav a:hover {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* セクション */
+        section {
+            background: rgba(255, 255, 255, 0.95);
+            margin-bottom: 2rem;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        section h2 {
+            color: #333;
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        section h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: linear-gradient(45deg, #ff9a9e, #fecfef);
+            border-radius: 2px;
+        }
+
+        /* ポートフォリオギャラリー */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            color: white;
+            padding: 1rem;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            transform: translateY(0);
+        }
+
+        /* スキル */
+        .skills {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+
+        .skill-item {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .skill-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .skill-item h3 {
+            margin-bottom: 0.5rem;
+        }
+
+        /* 経歴 */
+        .experience-item {
+            border-left: 3px solid #667eea;
+            padding-left: 1.5rem;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .experience-item::before {
+            content: '';
+            position: absolute;
+            left: -7px;
+            top: 0;
+            width: 12px;
+            height: 12px;
+            background: #667eea;
+            border-radius: 50%;
+        }
+
+        .experience-date {
+            color: #667eea;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        /* レスポンシブ */
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .contact-info {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .gallery {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* フッター */
+        footer {
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            border-radius: 15px;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- ヘッダー -->
+        <header>
+            <img src="images/profile.jpg" alt="プロフィール写真" class="profile-img">
+            <h1>あなたの名前</h1>
+            <p class="subtitle">フォトグラファー</p>
+            <div class="contact-info">
+                <a href="mailto:your.email@example.com" class="contact-item">Email</a>
+                <a href="tel:090-0000-0000" class="contact-item">Tel</a>
+                <a href="#" class="contact-item">Instagram</a>
+            </div>
+        </header>
+
+        <!-- ナビゲーション -->
+        <nav>
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+
+        <!-- 自己紹介 -->
+        <section id="about">
+            <h2>About Me</h2>
+            <p>私は〇年の経験を持つフォトグラファーです。ポートレート、風景、イベント撮影を専門としており、クライアントの想いを形にする撮影を心がけています。自然光を活かした温かみのある写真が得意で、被写体の魅力を最大限に引き出すことを大切にしています。</p>
+            <p>これまで多くの企業様や個人のお客様の撮影を手がけ、満足度の高いサービスを提供してまいりました。新しい挑戦を求めて、より多くの方々の大切な瞬間を撮影させていただければと思います。</p>
+        </section>
+
+        <!-- ポートフォリオ -->
+        <section id="portfolio">
+            <h2>Portfolio</h2>
+            <div class="gallery">
+                <div class="gallery-item">
+                    <img src="images/photo1.jpg" alt="作品1">
+                    <div class="gallery-overlay">
+                        <h3>ポートレート撮影</h3>
+                        <p>自然光を活かした温かみのある人物撮影</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/photo2.jpg" alt="作品2">
+                    <div class="gallery-overlay">
+                        <h3>風景写真</h3>
+                        <p>季節の美しさを捉えた風景撮影</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/photo3.jpg" alt="作品3">
+                    <div class="gallery-overlay">
+                        <h3>イベント撮影</h3>
+                        <p>大切な瞬間を逃さない記録写真</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/photo4.jpg" alt="作品4">
+                    <div class="gallery-overlay">
+                        <h3>商品撮影</h3>
+                        <p>商品の魅力を引き出す撮影</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/photo5.jpg" alt="作品5">
+                    <div class="gallery-overlay">
+                        <h3>ウェディング</h3>
+                        <p>一生の思い出を美しく残す</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/photo6.jpg" alt="作品6">
+                    <div class="gallery-overlay">
+                        <h3>企業撮影</h3>
+                        <p>プロフェッショナルな企業写真</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- スキル -->
+        <section id="skills">
+            <h2>Skills</h2>
+            <div class="skills">
+                <div class="skill-item">
+                    <h3>撮影技術</h3>
+                    <p>ポートレート、風景、商品撮影など幅広いジャンルに対応</p>
+                </div>
+                <div class="skill-item">
+                    <h3>画像編集</h3>
+                    <p>Adobe Photoshop、Lightroomを使用したプロレベルの編集</p>
+                </div>
+                <div class="skill-item">
+                    <h3>機材知識</h3>
+                    <p>Canon、Nikon、Sony等各種カメラ・レンズに精通</p>
+                </div>
+                <div class="skill-item">
+                    <h3>コミュニケーション</h3>
+                    <p>クライアントとの密なコミュニケーションによる要望実現</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 経歴 -->
+        <section id="experience">
+            <h2>Experience</h2>
+            <div class="experience-item">
+                <div class="experience-date">2023年 - 現在</div>
+                <h3>フリーランスフォトグラファー</h3>
+                <p>個人・企業向けの撮影業務を幅広く担当。ウェディング、イベント、商品撮影など多岐にわたるプロジェクトを手がける。</p>
+            </div>
+            <div class="experience-item">
+                <div class="experience-date">2021年 - 2023年</div>
+                <h3>写真スタジオ勤務</h3>
+                <p>大手写真スタジオにて、ポートレート撮影と画像編集業務を担当。年間500件以上の撮影を経験。</p>
+            </div>
+            <div class="experience-item">
+                <div class="experience-date">2019年 - 2021年</div>
+                <h3>アシスタントカメラマン</h3>
+                <p>プロフォトグラファーのアシスタントとして、撮影現場での経験を積む。機材管理や照明設営などの技術を習得。</p>
+            </div>
+        </section>
+
+        <!-- お問い合わせ -->
+        <section id="contact">
+            <h2>Contact</h2>
+            <p>撮影のご依頼やお問い合わせは以下の連絡先までお気軽にご連絡ください。</p>
+            <div style="margin-top: 2rem;">
+                <p><strong>Email:</strong> your.email@example.com</p>
+                <p><strong>Phone:</strong> 090-0000-0000</p>
+                <p><strong>Instagram:</strong> @your_instagram</p>
+                <p><strong>対応エリア:</strong> 東京都内及び近郊（その他地域はご相談ください）</p>
+            </div>
+        </section>
+
+        <!-- フッター -->
+        <footer>
+            <p>&copy; 2024 あなたの名前. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script>
+        // 画像管理用の変数
+        const photosPerPage = 24; // 1ページあたりの画像数
+        const totalPhotos = 200; // 総画像数（実際の数に合わせて変更してください）
+        let currentPage = 1;
+
+        // カテゴリ別の画像データ（例）
+        const photoCategories = {
+            'ポートレート': { count: 80, prefix: 'portrait' },
+            '風景': { count: 60, prefix: 'landscape' },
+            'イベント': { count: 40, prefix: 'event' },
+            '商品撮影': { count: 20, prefix: 'product' }
+        };
+
+        function generateImageList() {
+            const images = [];
+            let imageIndex = 1;
+
+            // カテゴリごとに画像を生成
+            Object.entries(photoCategories).forEach(([category, info]) => {
+                for (let i = 1; i <= info.count; i++) {
+                    images.push({
+                        src: `images/${info.prefix}${i}.jpg`,
+                        alt: `${category} 作品${i}`,
+                        category: category,
+                        index: imageIndex++
+                    });
+                }
+            });
+
+            return images;
+        }
+
+        const allImages = generateImageList();
+
+        function displayImages(page) {
+            const gallery = document.getElementById('gallery');
+            const startIndex = (page - 1) * photosPerPage;
+            const endIndex = Math.min(startIndex + photosPerPage, allImages.length);
+            
+            gallery.innerHTML = '';
+
+            for (let i = startIndex; i < endIndex; i++) {
+                const image = allImages[i];
+                const galleryItem = document.createElement('div');
+                galleryItem.className = 'gallery-item';
+                
+                galleryItem.innerHTML = `
+                    <img src="${image.src}" alt="${image.alt}" onerror="this.style.display='none'">
+                    <div class="gallery-overlay">
+                        <h4>${image.category}</h4>
+                        <p>作品 ${image.index}</p>
+                    </div>
+                `;
+                
+                gallery.appendChild(galleryItem);
+            }
+
+            updatePaginationInfo();
+        }
+
+        function updatePaginationInfo() {
+            const totalPages = Math.ceil(allImages.length / photosPerPage);
+            document.getElementById('pageInfo').textContent = `${currentPage} / ${totalPages}`;
+            
+            document.getElementById('prevBtn').disabled = currentPage === 1;
+            document.getElementById('nextBtn').disabled = currentPage === totalPages;
+        }
+
+        function previousPage() {
+            if (currentPage > 1) {
+                currentPage--;
+                displayImages(currentPage);
+                scrollToPortfolio();
+            }
+        }
+
+        function nextPage() {
+            const totalPages = Math.ceil(allImages.length / photosPerPage);
+            if (currentPage < totalPages) {
+                currentPage++;
+                displayImages(currentPage);
+                scrollToPortfolio();
+            }
+        }
+
+        function scrollToPortfolio() {
+            document.getElementById('portfolio').scrollIntoView({ 
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
+
+        // ページ読み込み時に最初のページを表示
+        document.addEventListener('DOMContentLoaded', function() {
+            displayImages(1);
+        });
+    </script>
+</body>
+</html>

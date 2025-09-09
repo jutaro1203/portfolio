@@ -60,18 +60,17 @@ a {
     font-weight: bold; 
 }
 
-/* ワークセクション */
-/* --- WORKS セクション（修正版） --- */
+/* --- WORKS セクション（重なり解消版） --- */
 .projects {
     position: relative;
     padding: 80px 20px;
     text-align: center;
     color: #fff;
-    background-color: transparent; /* 背景色を透明にして画像を見えるように */
+    background-color: transparent;
     overflow: visible;
 }
 
-/* 背景画像を疑似要素に配置（パスは下で確認） */
+/* 背景画像を疑似要素に配置 */
 .projects::before {
     content: "";
     position: absolute;
@@ -79,17 +78,12 @@ a {
     left: 0;
     right: 0;
     bottom: 0;
-    z-index: 0; /* カードより後ろ */
+    z-index: 0;
     pointer-events: none;
-
-    /* ここを自分の画像パスに合わせてください */
     background-image: url("images/work3-2.jpeg");
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
-
-    /* --- 固定表示にしたい場合は下の行のコメントを外す --- */
-    /* background-attachment: fixed; */
 }
 
 /* セクション内コンテンツは疑似要素の上に出す */
@@ -99,20 +93,21 @@ a {
     z-index: 1;
 }
 
-/* works-grid（カードグリッド）はこれまでどおり */
+/* works-grid（カードグリッド）- 重なり解消版 */
 .works-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    gap: 20px;
+    gap: 25px; /* ギャップを大きくして重なりを防ぐ */
     max-width: 1200px;
     margin: 0 auto;
+    padding: 20px; /* 全体にパディングを追加 */
 }
 
-/* カードは画像の上に出すので z-index を明示 */
+/* カードの基本設定（回転を無効化） */
 .card {
     position: relative;
     z-index: 2;
-    background-color: #fff; /* カード自体は白で浮かせる */
+    background-color: #fff;
     border-radius: 20px;
     padding: 15px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.15);
@@ -133,17 +128,18 @@ a {
     height: auto;
 }
 
-/* ホバー効果 */
+/* ホバー効果（重なりを防ぐため軽減） */
 .card:hover { 
-    transform: translateY(-8px) rotate(1deg);
-    box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+    transform: translateY(-5px); /* 回転を削除し、上移動のみに変更 */
+    box-shadow: 0 6px 20px rgba(0,0,0,0.2);
 }
 
 .card:hover img {
-    transform: scale(1.05);
+    transform: scale(1.02); /* スケールを小さくして重なりを防ぐ */
 }
 
-/* ランダム回転 */
+/* ランダム回転クラスを無効化（コメントアウト） */
+/*
 .card.rotate-left {
     transform: rotate(-2deg);
 }
@@ -159,6 +155,7 @@ a {
 .card:hover.rotate-right {
     transform: translateY(-8px) rotate(1deg) scale(1.02);
 }
+*/
 
 /* コンタクトセクション */
 .contact { 
@@ -205,24 +202,28 @@ a {
     margin-top: 50px; 
 }
 
-/* レスポンシブ */
+/* レスポンシブ（重なり解消版） */
 @media (max-width: 768px) {
     .works-grid {
         grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-        gap: 16px;
+        gap: 20px; /* ギャップを調整 */
+        padding: 15px;
     }
-    .card { padding: 12px; }
+    .card { 
+        padding: 12px; 
+    }
 }
 
 @media (max-width: 480px) {
     .works-grid {
         grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-        gap: 12px;
+        gap: 15px; /* ギャップを調整 */
+        padding: 10px;
     }
-    .card { padding: 10px; }
-    .contact input, .contact textarea, .contact button { font-size: 0.9rem; }
+    .card { 
+        padding: 10px; 
+    }
+    .contact input, .contact textarea, .contact button { 
+        font-size: 0.9rem; 
+    }
 }
-
-
-
-

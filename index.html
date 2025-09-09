@@ -90,7 +90,7 @@ section h2 {
     justify-content: center;
     gap: 1rem;
     padding-bottom: 1rem;
-    overflow: hidden; /* スクロールバー非表示 */
+    overflow: hidden;
 }
 
 .gallery-item img {
@@ -131,7 +131,6 @@ section h2 {
     box-shadow: 0 0 10px rgba(0,0,0,0.3);
 }
 
-/* 単色カラフル */
 .pagination button:nth-child(1){ background:#FF6B6B; }
 .pagination button:nth-child(2){ background:#6BCB77; }
 .pagination button:nth-child(3){ background:#4D96FF; }
@@ -147,6 +146,49 @@ footer {
     border-radius: 15px;
     margin-top: 2rem;
 }
+
+/* -------------- Aboutセクションの丸 -------------- */
+.rainbow-circle {
+    min-width: 250px;
+    min-height: 250px;
+    padding: 30px;
+    margin: 2rem auto;
+    border-radius: 50%;
+    background: linear-gradient(45deg,#ff9a9e,#b3e5ff,#d7b3ff);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    max-width: 90%;
+    height: auto;
+}
+
+.rainbow-circle ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-size: 1rem;
+    color: white;
+    font-weight: bold;
+}
+
+.rainbow-circle li {
+    margin: 0.5rem 0;
+}
+
+.rainbow-circle:hover {
+    background: linear-gradient(45deg,#76c7c0,#ffb347,#ff77a9);
+    transform: scale(1.1);
+    animation: bounce 0.5s;
+}
+
+@keyframes bounce {
+    0% { transform: scale(1.1); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1.1); }
+}
 </style>
 </head>
 <body>
@@ -159,25 +201,29 @@ footer {
 
 <nav>
     <ul>
-        <li>ฅ(՞•ﻌ•՞ฅ 三  ฅ՞•ﻌ•՞)ฅ</li>
+        <li>ฅ(՞•ﻌ•՞ฅ 三</li>
         <li><a href="#about">About</a></li>
         <li><a href="#portfolio">Portfolio</a></li>
-        <li>ฅ(՞•ﻌ•՞ฅ 三  ฅ՞•ﻌ•՞)ฅ</li>
-        <!--<li><a href="#contact">Contact</a></li>-->
+        <li>三  ฅ՞•ﻌ•՞)ฅ</li>
     </ul>
 </nav>
 
 <section id="about">
     <h2 style="text-align: center;">About</h2>
+    <!-- もともとの文章 -->
     <p>“Welcome to my portfolio, where I present moments capturing the world as I see it.</p>
-     <p>Thank you for taking the time to visit.</p>
-     <p>I hope these precious moments leave a lasting impression.</p>
-    <ul>
-        <li>- Communication and team management in store operations</li>
-        <li>- Data analysis and design experience</li>
-        <li>- Project planning and execution</li>
-        <li>- HTML / CSS / JavaScript / O365</li>
-    </ul>
+    <p>Thank you for taking the time to visit.</p>
+    <p>I hope these precious moments leave a lasting impression.</p>
+
+    <!-- ナビボタン風のレインボー丸 -->
+    <div class="rainbow-circle">
+        <ul>
+            <li>Communication and team management in store operations</li>
+            <li>Data analysis and design experience</li>
+            <li>Project planning and execution</li>
+            <li>HTML / CSS / JavaScript / O365</li>
+        </ul>
+    </div>
 </section>
 
 <section id="portfolio">
@@ -185,13 +231,6 @@ footer {
     <div class="gallery" id="gallery"></div>
     <div class="pagination" id="pagination"></div>
 </section>
-<!--
-<section id="contact">
-    <h2>Contact</h2>
-    <p>Email: your.email@example.com</p>
-    <p>Phone: 090-0000-0000</p>
-    <p>Instagram: @your_instagram</p>
-</section>-->
 
 <footer>
     <p>&copy; 2025 Mana Kobayashi. All rights reserved.</p>

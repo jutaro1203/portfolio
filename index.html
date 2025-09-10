@@ -581,7 +581,7 @@ const pagination = document.getElementById('pagination');
 imageFiles.sort(()=> Math.random()-0.5);
 
 let currentPage = 1;
-const imagesPerPage = 50;
+const imagesPerPage = 41;
 const totalPages = Math.ceil(imageFiles.length/imagesPerPage);
 
 function showPage(page){
@@ -616,7 +616,7 @@ function showPage(page){
         btn.addEventListener('click',()=>{
             currentPage=i;
             showPage(currentPage);
-            document.querySelector('#portfolio').scrollIntoView({behavior:'smooth'});
+            document.querySelector('#portfolio').scrollIntoView({behavior:'smooth', block:'start'});
         });
         pagination.appendChild(btn);
     }

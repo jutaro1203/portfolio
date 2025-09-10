@@ -227,9 +227,13 @@ footer {
 </section>
 
 <section id="portfolio">
-    <h2 style="text-align: center;">Portfolio</h2>
+<h2 style="text-align: center;">Portfolio</h2>
+    <!-- ページボタンをタイトル下に追加 -->
+    <div class="pagination" id="pagination-top"></div>
+    <!-- ギャラリー表示 -->
     <div class="gallery" id="gallery"></div>
-    <div class="pagination" id="pagination"></div>
+    <!-- ギャラリー下のページボタン -->
+    <div class="pagination" id="pagination-bottom"></div>
 </section>
 
 <footer>
@@ -576,8 +580,8 @@ const colors = [
 ];
 
 const gallery = document.getElementById('gallery');
-const pagination = document.getElementById('pagination');
-
+const paginationTop = document.getElementById('pagination-top');
+const paginationBottom = document.getElementById('pagination-bottom');
 imageFiles.sort(()=> Math.random()-0.5);
 
 let currentPage = 1;
@@ -608,17 +612,36 @@ function showPage(page){
         gallery.appendChild(div);
     });
 
-    pagination.innerHTML='';
+    // 上下両方のページボタンをクリア
+    paginationTop.innerHTML = '';
+    paginationBottom.innerHTML = '';
+
     for(let i=1;i<=totalPages;i++){
-        const btn=document.createElement('button');
-        btn.textContent=i;
-        if(i===page) btn.classList.add('active');
-        btn.addEventListener('click',()=>{
+        const btnTop = document.createElement('button');
+        const btnBottom = document.createElement('button');
+
+        btnTop.textContent = i;
+        btnBottom.textContent = i;
+
+        if(i===page){
+            btnTop.classList.add('active');
+            btnBottom.classList.add('active');
+        }
+
+        btnTop.addEventListener('click',()=>{
             currentPage=i;
             showPage(currentPage);
             document.querySelector('#portfolio').scrollIntoView({behavior:'smooth', block:'start'});
         });
-        pagination.appendChild(btn);
+
+        btnBottom.addEventListener('click',()=>{
+            currentPage=i;
+            showPage(currentPage);
+            document.querySelector('#portfolio').scrollIntoView({behavior:'smooth', block:'start'});
+        });
+
+        paginationTop.appendChild(btnTop);
+        paginationBottom.appendChild(btnBottom);
     }
 }
 

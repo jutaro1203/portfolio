@@ -149,7 +149,17 @@ section h2 {
 .pagination button:nth-child(6){ background:#00BCD4; }
 .pagination button:nth-child(7){ background:#3F51B5; }
 .pagination button:nth-child(8){ background:#9C27B0; }
-.pagination button:hover { opacity:0.8; }
+@keyframes bounce {
+  0%, 100% { transform: scale(1); }
+  30% { transform: scale(1.2); }
+  50% { transform: scale(0.9); }
+  70% { transform: scale(1.1); }
+}
+
+.pagination button:hover {
+  opacity: 0.8;
+  animation: bounce 0.6s ease;
+}
 
 footer {
     background: rgba(0,0,0,0.8);
@@ -676,35 +686,18 @@ function showPage(page){
 
 showPage(currentPage);
 </script>
-    <!-- 紙吹雪用のCSS -->
-<style>
-.confetti {
-    position: fixed;
-    pointer-events: none;
-    user-select: none;
-    animation: fall linear forwards;
-    z-index: 9999; /* 常に全面に表示 */
-}
-
-@keyframes fall {
-    0% { transform: translateY(-50px) rotate(0deg); opacity: 1; }
-    100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
-}
-</style>
-
-<!-- 紙吹雪用のJS -->
 <script>
 const confettiChars = ['★','♡','.','°','˖','✧','*'];
-const colors = ['#ff3d7f','#ffcc00','#33ff77','#33ccff','#ff77cc','#a366ff','#ff8866','#ffee33'];
+const confettiColors = ['#ff3d7f','#ffcc00','#33ff77','#33ccff','#ff77cc','#a366ff','#ff8866','#ffee33'];
 
 function createConfetti() {
-    if (document.querySelectorAll('.confetti').length > 30) return; // 最大30個に制限
+    if (document.querySelectorAll('.confetti').length > 30) return;
 
     const confetti = document.createElement('div');
     confetti.classList.add('confetti');
     
     confetti.textContent = confettiChars[Math.floor(Math.random() * confettiChars.length)];
-    confetti.style.color = colors[Math.floor(Math.random() * colors.length)];
+    confetti.style.color = confettiColors[Math.floor(Math.random() * confettiColors.length)];
     
     confetti.style.left = Math.random() * window.innerWidth + 'px';
     const size = Math.random() * 18 + 12;
@@ -717,7 +710,6 @@ function createConfetti() {
     setTimeout(() => confetti.remove(), duration * 1000);
 }
 
-// 0.1秒ごとにランダム発生（負荷軽減）
 setInterval(createConfetti, 100);
 </script>
 </body>

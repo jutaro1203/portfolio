@@ -121,7 +121,10 @@ section h2 {
     margin-top: 1rem;
     flex-wrap: wrap;
 }
-
+#pagination-top {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
 .pagination button {
     width: 40px;
     height: 40px;
@@ -249,7 +252,7 @@ footer {
 </div>
 
 <script>
-const imageFiles = [
+const imageFiles = [    
     'work1.jpg',
     'work10.JPG',
     'work100.jpg',
@@ -577,7 +580,26 @@ const imageFiles = [
 'Work2 (72).jpeg',
 'Work2 (73).jpeg',
 'Work2 (8).jpeg',
-'Work2 (9).jpeg'
+'Work2 (9).jpeg',
+    'Work3 (1).jpg',
+    'Work3 (10).jpg',
+    'Work3 (11).jpg',
+    'Work3 (12).jpg',
+    'Work3 (13).jpg',
+    'Work3 (14).jpg',
+    'Work3 (15).jpg',
+    'Work3 (16).jpg',
+    'Work3 (17).jpg',
+    'Work3 (18).jpg',
+    'Work3 (19).jpg',
+    'Work3 (2).jpg',
+    'Work3 (3).jpg',
+    'Work3 (4).jpg',
+    'Work3 (5).jpg',
+    'Work3 (6).jpg',
+    'Work3 (7).jpg',
+    'Work3 (8).jpg',
+    'Work3 (9).jpg'
 ];
 
 const colors = [
@@ -592,7 +614,7 @@ const paginationBottom = document.getElementById('pagination-bottom');
 imageFiles.sort(()=> Math.random()-0.5);
 
 let currentPage = 1;
-const imagesPerPage = 41;
+const imagesPerPage = 45;
 const totalPages = Math.ceil(imageFiles.length/imagesPerPage);
 
 function showPage(page){
@@ -653,6 +675,50 @@ function showPage(page){
 }
 
 showPage(currentPage);
+</script>
+    <!-- 紙吹雪用のCSS -->
+<style>
+.confetti {
+    position: fixed;
+    pointer-events: none;
+    user-select: none;
+    animation: fall linear forwards;
+    z-index: 9999; /* 常に全面に表示 */
+}
+
+@keyframes fall {
+    0% { transform: translateY(-50px) rotate(0deg); opacity: 1; }
+    100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
+}
+</style>
+
+<!-- 紙吹雪用のJS -->
+<script>
+const confettiChars = ['★','♡','.','°','˖','✧','*'];
+const colors = ['#ff3d7f','#ffcc00','#33ff77','#33ccff','#ff77cc','#a366ff','#ff8866','#ffee33'];
+
+function createConfetti() {
+    if (document.querySelectorAll('.confetti').length > 30) return; // 最大30個に制限
+
+    const confetti = document.createElement('div');
+    confetti.classList.add('confetti');
+    
+    confetti.textContent = confettiChars[Math.floor(Math.random() * confettiChars.length)];
+    confetti.style.color = colors[Math.floor(Math.random() * colors.length)];
+    
+    confetti.style.left = Math.random() * window.innerWidth + 'px';
+    const size = Math.random() * 18 + 12;
+    confetti.style.fontSize = size + 'px';
+    
+    const duration = Math.random() * 4 + 4;
+    confetti.style.animationDuration = duration + 's';
+    
+    document.body.appendChild(confetti);
+    setTimeout(() => confetti.remove(), duration * 1000);
+}
+
+// 0.1秒ごとにランダム発生（負荷軽減）
+setInterval(createConfetti, 100);
 </script>
 </body>
 </html>

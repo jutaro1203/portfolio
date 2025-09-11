@@ -101,18 +101,17 @@ section h2 {
 }
 
 .gallery-item img {
-    transition: transform 0.3s ease, box-shadow 0.3s ease, outline 0.3s ease;
-    outline: 4px solid transparent; /* デフォルトは透明 */
-    outline-offset: -4px;
-    position: relative; /* hover時の重なり用 */
-    z-index: 0;
+    display: block;
+    width: auto;
+    height: auto;
+    max-height: 250px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, border 0.3s ease;
 }
 
 .gallery-item img:hover {
     transform: scale(1.15);
-    z-index: 1;
-    box-shadow: 0 0 15px rgba(0,0,0,0.4);
-    outline-color: var(--hover-color, #76c7c0); /* JSで色をランダムに */
 }
 
 .pagination {
@@ -639,17 +638,14 @@ function showPage(page){
         const img = document.createElement('img');
         img.src = `images/${file}`;
         img.alt = file;
-const colors = [
-  '#E91E63','#FF3D00','#FF8F00','#FFC400',
-  '#8BC34A','#00BCD4','#3F51B5','#9C27B0'
-];
-
-document.querySelectorAll('.gallery-item img').forEach(img => {
-    img.addEventListener('mouseenter', () => {
-        const color = colors[Math.floor(Math.random() * colors.length)];
-        img.style.setProperty('--hover-color', color);
-    });
-});
+        img.addEventListener('mouseover',()=>{
+            const color = colors[Math.floor(Math.random()*colors.length)];
+            img.style.border=`4px solid ${color}`;
+            img.style.borderRadius='15px';
+        });
+        img.addEventListener('mouseout',()=>{
+            img.style.border='none';
+        });
         div.appendChild(img);
         gallery.appendChild(div);
     });
@@ -724,8 +720,8 @@ function createConfetti() {
     const size = Math.random() * 12 + 12;
     confetti.style.fontSize = size + 'px';
     
-    // ★ 落下時間（6〜10秒）
-    const duration = Math.random() * 4 + 6;
+    // ★ 落下時間（6〜12秒）
+    const duration = Math.random() * 6 + 6;
     confetti.style.animationDuration = duration + 's';
     
     document.body.appendChild(confetti);
